@@ -23,9 +23,10 @@
 hs_err_pid*
 /.metadata/
 /.settings/
-/.classpath
-/.project
 
+
+.classpath
+.project
 .dbeaver-data-*
 .~lock*
 
