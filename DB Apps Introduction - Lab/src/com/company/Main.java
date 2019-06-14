@@ -9,6 +9,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter username default (root): ");
         String user = sc.nextLine();
+        sc.close();
         user = user.equals("") ? "root" : user;
 //        System.out.println();
 
