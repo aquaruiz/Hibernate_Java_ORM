@@ -1,5 +1,6 @@
 package manual;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,11 +19,11 @@ public class Engine implements Runnable{
 		this.scanner = new Scanner(System.in);
 	}
 
-	@Override
 	public void run() {
 		try {
+			System.out.println("Choose a Task to run");
 			// Task 1
-//			this.createInititalTables();
+			this.createInititalTables();
 
 			// Task 2
 //			this.getVillainsNames();
@@ -43,12 +44,12 @@ public class Engine implements Runnable{
 //			this.printAllMinionNames();
 			
 			// Task 8
-			this.increaseMinionsAge();
+//			this.increaseMinionsAge();
 			
 			// Task 9
 //			this.increaseAgeByStoredProcedure();
 			
-//			this.scanner.close();
+			this.scanner.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -334,18 +335,62 @@ public class Engine implements Runnable{
 				.collect(Collectors.joining(System.lineSeparator())));
 	}
 
-	private void increaseMinionsAge() {
+	@SuppressWarnings("unused")
+	private void increaseMinionsAge() throws SQLException {
 		String[] minionIds = scanner.nextLine().split("\\s+");
+		String[] newArr =  new String[minionIds.length];
+		Arrays.fill(newArr, "?");
 		
-		// TODO ...
+		PreparedStatement updateAgeStmt = this.connection
+				.prepareStatement("UPDATE minions\n" + 
+						"SET age := age + 1, name := LOWER(name)\n" + 
+						"WHERE id IN (" + Arrays.stream(newArr).collect(Collectors.joining(", ")) + ");");
+		
+		for (int i = 1; i < newArr.length + 1; i++) {
+			updateAgeStmt.setString(i, minionIds[i - 1]);
+		}
+		
+		updateAgeStmt.execute();
+		
+		PreparedStatement getMinionStmt = this.connection
+				.prepareStatement("SELECT * FROM minions;");
+		
+		ResultSet allMinionsResultSet = getMinionStmt.executeQuery();
+		this.printOutResult(allMinionsResultSet, "id", "name", "age");
 	}
 
-	private void increaseAgeByStoredProcedure() {
-		// TODO Auto-generated method stub
+	@SuppressWarnings("unused")
+	private void increaseAgeByStoredProcedure() throws SQLException {
+		PreparedStatement dropStmt = this.connection
+				.prepareStatement("DROP PROCEDURE IF EXISTS usp_get_older;");
+		dropStmt.execute();
 		
+		PreparedStatement createMyFirstProcedure = this.connection
+				.prepareStatement("CREATE PROCEDURE usp_get_older (minion_id INT) \n" + 
+						"BEGIN\n" + 
+						"	UPDATE minions\n" + 
+						"	SET age := age + 1\n" + 
+						"	WHERE id = minion_id;\n" + 
+						"END;");
+		createMyFirstProcedure.execute();
+		
+		CallableStatement myFirstProcedute = this.connection
+				.prepareCall("CALL usp_get_older(?);");
+		
+		String minionId = scanner.nextLine();
+		myFirstProcedute.setInt(1, Integer.parseInt(minionId));
+		myFirstProcedute.execute();
+		
+		PreparedStatement getMinionById = this.connection
+				.prepareStatement("SELECT * FROM minions\n" + 
+						"WHERE id = ?;");
+		getMinionById.setString(1, minionId);
+		ResultSet minionResultSet = getMinionById.executeQuery();
+		
+		printOutResult(minionResultSet, "name", "age");
 	}
 
-
+	@SuppressWarnings("unused")
 	private void createInititalTables() throws SQLException {
 		PreparedStatement stmt1 =  connection.prepareStatement("INSERT INTO towns (name, country)\n" + 
 				"VALUES ('Kazanlak', 'Bulgaria'),\n" + 
@@ -361,17 +406,19 @@ public class Engine implements Runnable{
 				"	('God', 'good');\n");
 		PreparedStatement stmt3 =  connection.prepareStatement("INSERT INTO minions (name, age, town_id)\n" + 
 				"VALUES\n" + 
-				"	('Pancake', 0, 5),\n" + 
+				"	('Pancake', 0, 1),\n" + 
 				"	('Strawberry', 18, 1),\n" + 
-				"	('Strauss', 22, 12),\n" + 
-				"	('Pikatchu', 5, 5),\n" + 
-				"	('Meself', 42, 11);\n"); 
-		PreparedStatement stmt4 =  connection.prepareStatement("INSERT INTO minions_villains\n" + 
+				"	('Strauss', 22, 1),\n" + 
+				"	('Pikatchu', 5, 1),\n" + 
+				"	('Meself', 42, 1);\n"); 
+		PreparedStatement stmt4 =  connection
+				.prepareStatement("INSERT INTO minions_villains (minion_id, villain_id)\n" + 
 				"VALUES\n" + 
-				"	(1, 1),\n" + 
-				"	(2, 3),\n" + 
-				"	(4, 4),\n" + 
-				"	(5, 5);\n");
+				"	(1, 2)," + 
+				"	(2, 2)," + 
+				"	(3, 2)," + 
+				"	(4, 4)," +
+				"	(5, 4);\n");
 				
 		stmt1.execute();
 		stmt2.execute();
