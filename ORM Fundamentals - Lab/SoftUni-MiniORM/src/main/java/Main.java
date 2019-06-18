@@ -25,6 +25,6 @@ public class Main {
 		System.out.println(found.getUsername());
 		
 		userManager.find(User.class)
-		.forEach(u -> System.out.println(u.getUsername()));
+		.forEach(u -> System.out.println(u.getRegistrationDate()));
 	}
 }

@@ -3,12 +3,12 @@ package orm;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -97,9 +97,14 @@ public class EntityManager<E> implements DbContext<E> {
 				.filter(e -> e.isAnnotationPresent(Column.class))
 				.map(f -> {
 					f.setAccessible(true);
-					return f.getName();
+					return this.getDatabaseFieldName(f.getName());
 				})
 				.toArray(String[]::new);
+	}
+
+	private String getDatabaseFieldName(String name) {
+		// registrationDate <--> registration_date
+		return name.replaceAll("([A-Z])", "_$1").toLowerCase();
 	}
 
 	private String getTableName(Class aClass) {
@@ -145,7 +150,8 @@ public class EntityManager<E> implements DbContext<E> {
 				String name = f.getName();
 				Object value = null;
 				try {
-					value = this.getValueFromResultSet(rs, name, f.getType());
+					String classFieldName = this.getDatabaseFieldName(name);
+					value = this.getValueFromResultSet(rs, classFieldName, f.getType());
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -159,6 +165,24 @@ public class EntityManager<E> implements DbContext<E> {
 				}
 			});
 		return entity;
+	}
+
+	private String getClassFieldName(String name) {
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0; i < name.length(); i++) {
+			char current = name.charAt(i);
+			
+			if (current == '_') {
+				current = name.charAt(++i);
+				current = (char) (current - ('a' - 'A'));
+				i++;
+			} 
+			
+			result.append(current);
+		}
+		
+		return result.toString();
 	}
 
 	private Object getValueFromResultSet(ResultSet rs, String name, Class<?> type) throws SQLException {

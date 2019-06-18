@@ -21,17 +21,17 @@ public class User {
 	private int age;
 	
 	@Column
-	private Date registration;
+	private Date registrationDate;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(String username, String password, int age, Date registration) {
+	public User(String username, String password, int age, Date registrationDate) {
 		this.username = username;
 		this.password = password;
 		this.age = age;
-		this.registration = registration;
+		this.registrationDate = registrationDate;
 	}
 	
 	public String getUsername() {
@@ -47,8 +47,8 @@ public class User {
 		return age;
 	}
 	
-	public Date getRegistration() {
-		return registration;
+	public Date getRegistrationDate() {
+		return registrationDate;
 	}
 	
 	public void setUsername(String username) {
@@ -62,8 +62,8 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	public void setRegistration(Date registration) {
-		this.registration = registration;
+
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
 	}
 }
