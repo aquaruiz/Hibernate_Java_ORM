@@ -46,4 +46,9 @@ public class Student {
     public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
+    
+    @Override
+    	public String toString() {
+    		return "Student{id=" + id + ", name=" + name + ", registrationDate=" + registrationDate + "}";
+    	}
 }
