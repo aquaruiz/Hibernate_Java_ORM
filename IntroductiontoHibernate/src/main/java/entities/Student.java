@@ -3,15 +3,17 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-//@Entity @Table(name = "students")
+// JPA
+@Entity 
+@Table(name = "students")
 public class Student {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-//    @Column(name = "first_name", length = 50)
+    @Column(name = "first_name", length = 50)
     private String name;
-//    @Column(name = "registration_date")
+    @Column(name = "registration_date")
     private Date registrationDate;
     
     public Student(String string, Date date) {

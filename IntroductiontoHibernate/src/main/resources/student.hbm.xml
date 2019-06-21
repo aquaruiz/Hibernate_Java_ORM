@@ -3,6 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
+<!-- Not needed for JPA -->
 <hibernate-mapping>
     <class name="entities.Student" table="students">
         <id name="id" column="id">
