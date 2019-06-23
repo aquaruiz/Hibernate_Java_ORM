@@ -7,10 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
+//@MappedSuperclass
 @Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,6 +25,9 @@ public abstract class Person {
 			unique = true
 	)
 	private String name;
+	
+	@Column
+	private int age;
 	
 	public Person() {
 
