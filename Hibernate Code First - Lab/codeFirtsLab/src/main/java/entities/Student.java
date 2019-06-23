@@ -1,11 +1,13 @@
 package entities;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity(name = "students")
+@DiscriminatorValue("st")
 public class Student extends Person {
-	@Column(nullable = false)	
+	@Column(name = "grade")
 	private int grade;
 	
 	public Student() {

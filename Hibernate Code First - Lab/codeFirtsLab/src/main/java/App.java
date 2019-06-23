@@ -1,10 +1,16 @@
 
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import org.hibernate.Session;
 
 import entities.Person;
 import entities.Student;
@@ -27,6 +33,22 @@ public class App
     	Arrays.stream(people)
     		.forEach(entityManager::persist);
 
-    	entityManager.getTransaction().commit();
+    	CriteriaQuery<Teacher> query = entityManager.getCriteriaBuilder()
+    			.createQuery(Teacher.class);
+
+//    	Root<Teacher> root = query.from(Teacher.class);
+//    	query.select(root);
+    	
+//    	List<Teacher> teachers = entityManager.createQuery(query).getResultList();
+//    	entityManager.getTransaction().commit();
+    	
+//    	teachers.forEach(te -> System.out.println(te.getName()));
+
+    	query.from(Teacher.class);
+    	entityManager.createQuery(query)
+    		.getResultList()
+    		.forEach(te -> System.out.println(te.getName()));
+    	
+    	entityManager.close();
     }
 }
