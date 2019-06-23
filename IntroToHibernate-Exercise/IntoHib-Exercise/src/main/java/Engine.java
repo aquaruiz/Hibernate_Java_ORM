@@ -1,5 +1,3 @@
-package entities;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
+
+import entities.Address;
+import entities.Employee;
+import entities.Project;
+import entities.Town;
 
 public class Engine implements Runnable {
 
