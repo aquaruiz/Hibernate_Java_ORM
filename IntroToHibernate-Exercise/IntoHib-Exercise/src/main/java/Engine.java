@@ -46,6 +46,7 @@ public class Engine implements Runnable {
 				this.containsEmployee();
 			} catch (Exception e) {
 				// TODO: handle exception
+				e.printStackTrace();
 			}
 			break;
 		case "4":
@@ -62,6 +63,7 @@ public class Engine implements Runnable {
 				this.addAddressAndUpdateEmployee();
 			} catch (Exception e) {
 				// TODO: handle exception
+				e.printStackTrace();
 			}
 			break;
 		case "7":
@@ -74,6 +76,7 @@ public class Engine implements Runnable {
 				this.getEmployeesWithProject(); 
 			} catch (Exception e) {
 				// TODO: handle exception
+				e.printStackTrace();
 			}
 			break;
 		case "9":
@@ -90,6 +93,7 @@ public class Engine implements Runnable {
 				this.removeTowns();
 			} catch (Exception e) {
 				// TODO: handle exception
+				e.printStackTrace();
 			}
 			break;
 		case "12":
@@ -98,6 +102,7 @@ public class Engine implements Runnable {
 				this.findEmployeeByFirstName();
 			} catch (Exception e) {
 				// TODO: handle exception
+				e.printStackTrace();
 			}
 			break;
 		case "13":
