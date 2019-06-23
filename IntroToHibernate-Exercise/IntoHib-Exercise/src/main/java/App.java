@@ -12,7 +12,8 @@ public class App
     	EntityManager em = factory.createEntityManager();
     	
     	Engine engine = new Engine(em);
-    	
     	engine.run();
+    	
+    	factory.close();
     }
 }

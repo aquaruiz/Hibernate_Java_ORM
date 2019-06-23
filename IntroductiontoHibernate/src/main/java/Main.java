@@ -4,17 +4,10 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import javax.swing.text.Position.Bias;
 
-import org.hibernate.Session;
 import entities.Student;
-import utils.HibernateUtils;
 
 public class Main {
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 //        Session session = HibernateUtils.getSession();
 //        session.beginTransaction();

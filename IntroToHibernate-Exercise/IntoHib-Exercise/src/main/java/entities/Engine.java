@@ -24,59 +24,121 @@ public class Engine implements Runnable {
 
 	@Override
 	public void run() {
+		String task = null;
 		try {
+			task = readInput("Choose A Task Number to Run: ");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		switch (task) {
+		case "2":
 			// Task 2
-			
-			
+			this.removeObjects();
+			break;
+		case "3":
 			// Task 3
 			try {
-//				this.containsEmployee();
+				this.containsEmployee();
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-
-//			 Task 4
-//			this.employeesWithSalaryOver();
-			
+			break;
+		case "4":
+			// Task 4
+			this.employeesWithSalaryOver();
+			break;
+		case "5":
 			// Task 5
-//			this.employeesFromDepartment();
-			
+			this.employeesFromDepartment();
+			break;
+		case "6":
 			// Task 6
 			try {
-//				this.addAddressAndUpdateEmployee();
+				this.addAddressAndUpdateEmployee();
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			
+			break;
+		case "7":
 			// Task 7
-//			this.addressesWithEmployeeCount();
-	
+			this.addressesWithEmployeeCount();
+			break;
+		case "8":
 			// Task 8
 			try {
-//				this.getEmployeesWithProject(); 
+				this.getEmployeesWithProject(); 
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			
+			break;
+		case "9":
 			// Task 9
-//			this.findLatest10Projects();
-			
+			this.findLatest10Projects();
+			break;
+		case "10":
 			// Task 10
-//			this.increaseSalary();
-			
+			this.increaseSalary();
+			break;
+		case "11":
 			// Task 11
-			this.removeTowns();
+			try {
+				this.removeTowns();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			break;
+		case "12":
 			// Task 12
+			try {
+				this.findEmployeeByFirstName();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			break;
+		case "13":
 			// Task 13
-//			this.employeesMaxSalary();
-		} 
-	finally {
-			this.entityManager.close();
+			this.employeesMaxSalary();
+		default:
+			System.out.println("Choose again: ");
+			run();
+			break;
+		}
+		
+		try {
+			String nextTask = readInput("Wanna continue: Y/N ? ");
+			switch (nextTask.toLowerCase()) {
+			case "y":
+				run();
+				break;
+			default:
+				System.out.println("Bye");
+				this.entityManager.close();
+				return;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
+	private void removeObjects() {
+		this.entityManager.getTransaction().begin();
+		List<Town> towns = this.entityManager
+				.createQuery("FROM Town", Town.class).getResultList();
+		
+		for (Town town : towns) {
+			if (town.getName().length() > 5) {
+				this.entityManager.detach(town);
+			}
+		}
 
-	@SuppressWarnings("unused")
+		towns.forEach(t -> t.setName(t.getName().toLowerCase()));
+		
+		this.entityManager.getTransaction().commit();
+	}
+
 	private void containsEmployee() throws IOException {
 		String employeeName = readInput("Enter Name and Last Name: ");
 		
@@ -117,7 +179,6 @@ public class Engine implements Runnable {
 		this.entityManager.getTransaction().commit();;
 	}
 
-	@SuppressWarnings("unused")
 	private void employeesFromDepartment() {
 		String departmentString = "Research and Development";
 		
@@ -139,8 +200,6 @@ public class Engine implements Runnable {
 		this.entityManager.getTransaction().commit();;
 	}
 
-
-	@SuppressWarnings("unused")
 	private void addAddressAndUpdateEmployee() throws IOException {
 		String lastName = readInput("Enter Employee Last Name: ");
 //		String addressString = "bul. Vitosha 150";
@@ -150,14 +209,16 @@ public class Engine implements Runnable {
 		newAddress.setText(addressString);
 		
 		this.entityManager.getTransaction().begin();
-		Town currentTown = this.entityManager.createQuery("FROM Town WHERE name = 'Sofia'",
+		Town currentTown = this.entityManager
+				.createQuery("FROM Town WHERE name = 'Sofia'",
 				Town.class)
 			.getSingleResult();
 		
 		newAddress.setTown(currentTown);
 		this.entityManager.persist(newAddress);
 		
-		Employee employee = this.entityManager.createQuery("FROM Employee WHERE lastName = :lastName", 
+		Employee employee = this.entityManager
+				.createQuery("FROM Employee WHERE lastName = :lastName", 
 					Employee.class)
 				.setParameter("lastName", lastName)
 				.getSingleResult();
@@ -168,7 +229,6 @@ public class Engine implements Runnable {
 		this.entityManager.getTransaction().commit();
 	}
 
-	@SuppressWarnings("unused")
 	private void addressesWithEmployeeCount() {
 		this.entityManager.getTransaction().begin();
 		
@@ -187,8 +247,6 @@ public class Engine implements Runnable {
 				);
 	}
 	
-	
-	@SuppressWarnings("unused")
 	private void getEmployeesWithProject() throws IOException {
 		int employeeId = Integer.parseInt(readInput("Enter Employee ID: "));
 		
@@ -215,7 +273,6 @@ public class Engine implements Runnable {
 		this.entityManager.getTransaction().commit();
 	}
 
-	@SuppressWarnings("unused")
 	private void findLatest10Projects() {
 		final int projectsCount = 10;
 		
@@ -274,11 +331,79 @@ public class Engine implements Runnable {
 	}
 	
 	private void removeTowns() throws IOException {
-		String townToDelete = readInput("Enter Town Name for Deletion: ");
+		String townName = readInput("Enter Town Name for Deletion: ");
 		
 		this.entityManager.getTransaction().begin();
 		
-		List<Town> townsToDelete = this.entityManager.createQuery("", Town.class);
+		Town townDelete = this.entityManager.createQuery("FROM Town "
+				+ "WHERE name = :town", Town.class)
+				.setParameter("town", townName)
+				.getSingleResult();
+		
+		List<Address> addressesToDelete = this.entityManager
+				.createQuery("FROM Address "
+						+ "WHERE town_id = :id", Address.class)
+				.setParameter("id", townDelete.getId())
+				.getResultList();
+
+		addressesToDelete
+			.forEach(t -> t.getEmployees()
+						.forEach(em -> em.setAddress(null)));
+
+		addressesToDelete.forEach(t -> this.entityManager.remove(t));
+		this.entityManager.remove(townDelete);
+
+		int countDeletedAddresses = addressesToDelete.size();
+		System.out.printf("%d address%s in %s deleted", 
+				countDeletedAddresses,
+				countDeletedAddresses == 1 ? "" : "es" ,
+				townName);
+		
+		this.entityManager.getTransaction().commit();
+	}
+
+	private void findEmployeeByFirstName() throws IOException {
+		String firstName2Letters = readInput("Enter First 2 Letters from Empoyee's First Name: ");
+	
+		this.entityManager.getTransaction().begin();
+		List<Employee> employees = this.entityManager
+				.createQuery("FROM Employee "
+						+ "WHERE firstName LIKE CONCAT(:letters, '%')", Employee.class)
+				.setParameter("letters", firstName2Letters)
+				.getResultList();
+		
+		employees.forEach(empl-> System.out.printf("%s %s - %s - ($%s)%n",
+				empl.getFirstName(),
+				empl.getLastName(),
+				empl.getJobTitle(),
+				empl.getSalary()));
+				
+		this.entityManager.getTransaction().commit();
+	}
+
+	private void employeesMaxSalary() {
+		final BigDecimal lowerBoundry = BigDecimal.valueOf(30000);
+		final BigDecimal upperBoundry = BigDecimal.valueOf(70000);
+		
+		this.entityManager.getTransaction().begin();
+		var filtereDepartments = this.entityManager
+				.createQuery("SELECT department.name, MAX(salary) " +
+						"FROM Employee " + 
+						"GROUP BY department.name\n" +
+						"HAVING MAX(salary) NOT BETWEEN :low AND :up",
+					Object[].class)
+				.setParameter("low", lowerBoundry)
+				.setParameter("up", upperBoundry)
+				.getResultList();
+
+//		List<Object[]> filtereDepartments = this.entityManager
+//                .createQuery("SELECT e.department.name, MAX(e.salary)" +
+//                        "FROM Employee AS e " +
+//                        "GROUP BY e.department.id " +
+//                        "HAVING MAX(e.salary) NOT BETWEEN 30000 AND 70000", Object[].class)
+//                .getResultList();
+
+		filtereDepartments.forEach(empl -> System.out.println(empl[0] + " - " + empl[1]));
 		
 		this.entityManager.getTransaction().commit();
 	}
