@@ -1,5 +1,6 @@
 
 
+import java.net.Socket;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import entities.Mother;
 import entities.Person;
 import entities.Student;
 import entities.Teacher;
@@ -28,11 +30,21 @@ public class App
     			new Teacher("Gosho", "Java")
     	};
     	
-    	entityManager.getTransaction().begin();
-    	
-    	Arrays.stream(people)
-    		.forEach(entityManager::persist);
+    	inTransaction(entityManager, 
+    			() -> Arrays.stream(people)
+        			.forEach(entityManager::persist)); 
 
+    	Mother mother = new Mother("Gia");
+    	mother.setChild(people[0]);
+    	
+    	inTransaction(entityManager, () -> entityManager.persist(mother)); 
+    	
+    	Mother mother1 = entityManager.find(Mother.class, 3);
+    	Person person = mother1.getChild();
+    	Mother mother2 = person.getMother();
+    	
+    	System.out.println(mother1);
+    	
     	CriteriaQuery<Teacher> query = entityManager.getCriteriaBuilder()
     			.createQuery(Teacher.class);
 
@@ -51,4 +63,10 @@ public class App
     	
     	entityManager.close();
     }
+    
+    private static void inTransaction(EntityManager entityManager, Runnable runnable) {
+    	entityManager.getTransaction().begin();
+    	runnable.run();
+    	entityManager.getTransaction().commit();
+	}
 }
