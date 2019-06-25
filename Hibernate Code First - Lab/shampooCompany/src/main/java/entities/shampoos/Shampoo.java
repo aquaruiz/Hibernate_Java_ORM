@@ -10,7 +10,7 @@ import entities.labels.BasicLabel;
 public interface Shampoo {
 	long getId();
 	
-	void setId();
+	void setId(long id);
 	
 	String getBrand();
 	
@@ -30,5 +30,5 @@ public interface Shampoo {
 	
 	Set<BasicIngredient> getIngredients();
 	
-	void setBasicIngredients(Set<BasicIngredient> ingredients);
+	void setIngredients(Set<BasicIngredient> ingredients);
 }
