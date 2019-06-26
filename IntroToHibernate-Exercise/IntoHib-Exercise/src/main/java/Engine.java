@@ -266,7 +266,7 @@ public class Engine implements Runnable {
 				.setParameter("emplId", employeeId)
 				.getSingleResult();
 		
-		System.out.printf("%s %s - %s%n\t%s",
+		System.out.printf("%s %s - %s%n\t%s%n",
 					employee.getFirstName(),
 					employee.getLastName(),
 					employee.getJobTitle(),
@@ -362,7 +362,7 @@ public class Engine implements Runnable {
 		this.entityManager.remove(townDelete);
 
 		int countDeletedAddresses = addressesToDelete.size();
-		System.out.printf("%d address%s in %s deleted", 
+		System.out.printf("%d address%s in %s deleted%n", 
 				countDeletedAddresses,
 				countDeletedAddresses == 1 ? "" : "es" ,
 				townName);
