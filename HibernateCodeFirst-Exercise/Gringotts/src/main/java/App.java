@@ -6,7 +6,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	EntityManagerFactory factory = Persistence.createEntityManagerFactory("shampoo");
+    	EntityManagerFactory factory = Persistence.createEntityManagerFactory("gringotts");
     	EntityManager entityManager = factory.createEntityManager();
     	    	
     	Runnable runnable = new Engine(entityManager);

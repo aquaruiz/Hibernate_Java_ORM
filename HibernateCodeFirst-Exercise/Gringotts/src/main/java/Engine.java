@@ -11,7 +11,6 @@ public class Engine implements Runnable{
 	public void run() {
 		this.entityManager.getTransaction().begin();
 
-		
 		this.entityManager.getTransaction().commit();
 		this.entityManager.clear();
 	}
