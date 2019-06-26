@@ -3,6 +3,7 @@ package entities.ingredients;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -21,12 +22,15 @@ import entities.shampoos.BasicShampoo;
 @Entity
 @Table(name = "ingredients")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "indergrient_type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "ingregrient_type", 
+					discriminatorType = DiscriminatorType.STRING)
 public abstract class BasicIngredient implements Ingredient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Basic
 	private String name;
+	@Basic
 	private BigDecimal price;
 	@ManyToMany(mappedBy = "ingredients", cascade =  CascadeType.ALL)
 	private List<BasicShampoo> shampoos;

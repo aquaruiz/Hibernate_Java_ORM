@@ -9,13 +9,11 @@ import entities.Size;
 import entities.labels.BasicLabel;
 
 @Entity
-@DiscriminatorValue(value = "FN'")
+@DiscriminatorValue(value = "FN")
 public class FreshNuke extends BasicShampoo {
 	private static final String BRAND = "Fresh Nuke";
 	private static final BigDecimal PRICE = BigDecimal.valueOf(9.33);
 	private static final Size SIZE = Size.BIG;
-	private static final BasicLabel LABEL = new BasicLabel("Fresh Nuke Shampoo", "Contains mint and nettle");
-	
 
 	public FreshNuke(BasicLabel classicLabel) {
 		super(BRAND, PRICE, SIZE, classicLabel);

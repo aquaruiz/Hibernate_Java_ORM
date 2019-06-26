@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -30,7 +31,7 @@ import entities.labels.BasicLabel;
 @DiscriminatorColumn(name = "shampoo_type", discriminatorType = DiscriminatorType.STRING)
 public class BasicShampoo implements Shampoo {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private BigDecimal price;
 	private String brand;
@@ -43,16 +44,16 @@ public class BasicShampoo implements Shampoo {
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY
 		)
+	@JoinColumn(name = "label", referencedColumnName = "id")
 	private BasicLabel label;
 	
 	@ManyToMany(
-			cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY
-		)
+			cascade = CascadeType.ALL, fetch = FetchType.LAZY
+			)
 	@JoinTable(
 			name = "shampoos_ingredients",
 			joinColumns = @JoinColumn(
-						name = "shampoo_id",
+						name = "shampoo_id", 
 						referencedColumnName = "id"
 					),
 			inverseJoinColumns = @JoinColumn(
@@ -66,12 +67,15 @@ public class BasicShampoo implements Shampoo {
 		this.ingredients = new HashSet<>();
 	}
 	
-	public BasicShampoo(String brand, BigDecimal price, Size size, BasicLabel label) {
+	public BasicShampoo(String brand, 
+						BigDecimal price, 
+						Size size, 
+						BasicLabel label) {
 		this();
-		this.price = price;
-		this.brand = brand;
-		this.size = size;
-		this.label = label;
+		setBrand(brand);
+		setPrice(price);
+		setSize(size);
+		setLabel(label);
 	}
 
 	public long getId() {
@@ -92,6 +96,10 @@ public class BasicShampoo implements Shampoo {
 	
 	public Set<BasicIngredient> getIngredients() {
 		return ingredients;
+	}
+	
+	public void addIngredient(BasicIngredient ingredient) {
+		this.ingredients.add(ingredient);
 	}
 	
 	public void setId(long id) {

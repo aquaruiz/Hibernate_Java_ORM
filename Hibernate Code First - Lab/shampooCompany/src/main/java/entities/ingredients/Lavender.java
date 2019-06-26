@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 
 @SuppressWarnings("serial")
 @Entity
-@DiscriminatorValue(value = "LV'")
+@DiscriminatorValue(value = "LV")
 public class Lavender extends BasicIngredient {
 	private static final String NAME = "Lavender";
 	private static final BigDecimal PRICE =  BigDecimal.valueOf(2);

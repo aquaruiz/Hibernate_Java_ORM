@@ -1,5 +1,6 @@
 package entities.labels;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +19,9 @@ public class BasicLabel implements Label{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@Basic
 	private String title;
+	@Basic
 	private String subtitle;
 
 	@OneToOne(
@@ -34,8 +37,8 @@ public class BasicLabel implements Label{
 	}
 	
 	public BasicLabel(String title, String subtitle) {
-		this.title = title;
-		this.subtitle = subtitle;
+		setTitle(title);
+		setSubtitle(subtitle);
 	}
 
 	public long getId() {

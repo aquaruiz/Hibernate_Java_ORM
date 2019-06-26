@@ -17,7 +17,7 @@ public abstract class BasicChemicalIngredient extends BasicIngredient implements
 	
 	public BasicChemicalIngredient(String name, BigDecimal price, String chemicalFormula) {
 		super(name, price);
-		this.chemicalFormula = chemicalFormula;
+		setChemicalFormula(chemicalFormula);
 	}
 
 	public String getChemicalFormula() {

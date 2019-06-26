@@ -1,5 +1,5 @@
 package entities;
 
 public enum Size {
-	SMALL, MEDIUM, BIG
+	SMALL, MEDIUM, BIG, LARGE
 }

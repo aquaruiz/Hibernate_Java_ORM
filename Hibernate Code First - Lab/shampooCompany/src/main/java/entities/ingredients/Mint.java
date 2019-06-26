@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 
 @SuppressWarnings("serial")
 @Entity
-@DiscriminatorValue(value = "MT'")
+@DiscriminatorValue(value = "MT")
 public class Mint extends BasicIngredient {
 	private static final String NAME = "Mint";
 	private static final BigDecimal PRICE =  BigDecimal.valueOf(3.54);
@@ -15,5 +15,4 @@ public class Mint extends BasicIngredient {
 	public Mint() {
 		super(NAME, PRICE);
 	}
-	
 }
