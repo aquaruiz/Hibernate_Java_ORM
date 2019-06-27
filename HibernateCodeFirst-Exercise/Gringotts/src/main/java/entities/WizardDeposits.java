@@ -60,6 +60,9 @@ public class WizardDeposits {
 	@Column(name = "is_deposit_expired")
 	private boolean isDepositExpired;
 
+	public WizardDeposits() {
+	}
+	
 	public int getId() {
 		return id;
 	}
