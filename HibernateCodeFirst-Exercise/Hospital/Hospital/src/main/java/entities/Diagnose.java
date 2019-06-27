@@ -35,4 +35,12 @@ public class Diagnose extends BaseId{
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+
+	public Set<Patient> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(Set<Patient> patients) {
+		this.patients = patients;
+	}
 }

@@ -38,4 +38,12 @@ public class Visitation extends BaseId {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
 }
