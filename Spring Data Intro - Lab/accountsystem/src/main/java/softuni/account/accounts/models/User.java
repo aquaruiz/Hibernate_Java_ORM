@@ -16,7 +16,7 @@ public class User {
 
     private  int age;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Account> accounts;
 
     public User() {
