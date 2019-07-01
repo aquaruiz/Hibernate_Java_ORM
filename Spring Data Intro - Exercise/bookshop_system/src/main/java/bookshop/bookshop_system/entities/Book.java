@@ -30,7 +30,7 @@ public class Book extends BaseEntity {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "age_restriction", nullable = false)
-    private  AgeRestriction ageRestriction;
+    private AgeRestriction ageRestriction;
 
     @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")

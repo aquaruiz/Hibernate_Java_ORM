@@ -13,12 +13,12 @@ import java.io.IOException;
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
     private final FileUtil fileUtil;
-    private  final String CATEGORY_FILE_PATH =
-                        "src" + File.separator +
-                        "main" + File.separator +
-                        "resources" + File.separator +
-                        "files" + File.separator +
-                        "categories.txt";
+    private final String CATEGORY_FILE_PATH =
+            "src" + File.separator +
+                    "main" + File.separator +
+                    "resources" + File.separator +
+                    "files" + File.separator +
+                    "categories.txt";
 
     public CategoryServiceImpl(CategoryRepository categoryRepository, FileUtil fileUtil) {
         this.categoryRepository = categoryRepository;
@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void seedCategory() throws IOException {
-        if (this.categoryRepository.count() > 0){
+        if (this.categoryRepository.count() > 0) {
             return;
         }
 

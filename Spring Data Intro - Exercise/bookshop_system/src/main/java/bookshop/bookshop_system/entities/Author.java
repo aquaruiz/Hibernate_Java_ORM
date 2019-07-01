@@ -1,21 +1,18 @@
 package bookshop.bookshop_system.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "authors")
-public class Author  extends BaseEntity {
+public class Author extends BaseEntity {
     @Column(name = "first_name")
-    private  String firstName;
+    private String firstName;
 
     @Column(name = "last_name", nullable = false)
-    private  String lastName;
+    private String lastName;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private Set<Book> books;
 
     public Author() {

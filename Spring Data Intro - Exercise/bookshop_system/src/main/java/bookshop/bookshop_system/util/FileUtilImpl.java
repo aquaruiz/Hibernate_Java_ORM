@@ -15,7 +15,7 @@ public class FileUtilImpl implements FileUtil {
         List<String> fileInfo = new ArrayList<>();
 
         String line;
-        while((line = bufferedReader.readLine()) != null){
+        while ((line = bufferedReader.readLine()) != null) {
             fileInfo.add(line);
         }
 

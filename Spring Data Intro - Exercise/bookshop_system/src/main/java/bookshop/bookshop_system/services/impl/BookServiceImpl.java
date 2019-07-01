@@ -16,18 +16,20 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional // OR cascadeType.ALL inside entity
 public class BookServiceImpl implements BookService {
     private final static String BOOKS_FILE_PATH =
             "src" + File.separator +
-            "main" + File.separator +
-            "resources" + File.separator +
-            "files" + File.separator +
-            "books.txt";
+                    "main" + File.separator +
+                    "resources" + File.separator +
+                    "files" + File.separator +
+                    "books.txt";
     public final CategoryRepository categoryRepository;
     private final BookRepository bookRepository;
     public final AuthorRepository authorRepository;
@@ -47,7 +49,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void seedBooks() throws IOException {
-        if (this.bookRepository.count() > 0){
+        if (this.bookRepository.count() > 0) {
             return;
         }
 
@@ -84,6 +86,35 @@ public class BookServiceImpl implements BookService {
         }
     }
 
+    @Override
+    public List<String> findAllTitles() {
+        List<String> books = this.bookRepository
+                .findAllByReleaseDateAfter(
+                        LocalDate.parse(
+                                "31/12/2000",
+                                DateTimeFormatter.ofPattern("d/M/yyyy")
+                        ))
+                .stream()
+                .map(b -> b.getTitle())
+                .collect(Collectors.toList());
+
+        return books;
+    }
+
+    @Override
+    public List<String> findAllAuthors() {
+        return this.bookRepository
+                .findAllByReleaseDateBefore(LocalDate.parse(
+                        "01/01/1990",
+                        DateTimeFormatter.ofPattern("d/M/yyyy")
+                ))
+                .stream()
+                .map(b -> String.format("%s %s",
+                        b.getAuthor().getFirstName(),
+                        b.getAuthor().getLastName()))
+                .collect(Collectors.toList());
+    }
+
     private Author randomAuthor() {
         Random random = new Random();
         int index = random.nextInt((int) this.authorRepository.count());
@@ -96,7 +127,7 @@ public class BookServiceImpl implements BookService {
         return this.categoryRepository.getOne(index + 1);
     }
 
-    private  Set<Category> randomCategories(){
+    private Set<Category> randomCategories() {
         Set<Category> categories = new HashSet<>();
 
         Random random = new Random();
@@ -107,5 +138,16 @@ public class BookServiceImpl implements BookService {
         }
 
         return categories;
+    }
+
+    public List<String> findAllBooksByAuthor() {
+        Author author = this.authorRepository.findAuthorByFirstNameAndLastName("George", "Powell");
+        List<Book> books = this.bookRepository.findAllByAuthorOrderByReleaseDateDescTitleAsc(author);
+        return books.stream()
+                .map(b -> String.format("%s --> released on %s -  %d copies",
+                        b.getTitle(),
+                        b.getReleaseDate().toString(),
+                        b.getCopies()))
+                .collect(Collectors.toList());
     }
 }
