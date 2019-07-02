@@ -1,23 +1,28 @@
 package spring_intro.user_system.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column( length = 30, nullable = false)
+public class User extends BaseId {
+    @Column(length = 30, nullable = false)
+//    @Min(4)
     private String username;
 
     @Column(nullable = false, length = 50)
+//    @Size(min = 6, max = 30)
+//    @Pattern(regexp = "[a-z]+")
+//    @Pattern(regexp = "[A-Z]+")
+//    @Pattern(regexp = "[0-9]+")
+//    @Pattern(regexp = "[!@#$%^&*()_+<>?]+")
     private String password;
 
     @Column(nullable = false)
+//    @Email(regexp = "(^[a-zA-Z0-9]+[.-_-]*[a-zA-Z0-9]+)@([a-zA-Z0-9]+[--]*[a-zA-Z0-9]+\\.[a-zA-Z0-9]+[--]*[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+[--]*[a-zA-Z0-9])*$)")
     private String email;
 
     @Column(name = "registered_on")
@@ -26,15 +31,15 @@ public class User {
     @Column(name = "last_time_logged_in")
     private Date lastTimeLoggedIn;
 
+//    @Min(1)
+//    @Max(120)
     private int age;
 
     @Column(name = "is_deleted")
     private boolean isDeleted;
 
-    @ManyToOne
     private Town bornTown;
 
-    @ManyToOne
     private Town currentlyLivingTown;
 
     @Column(name = "first_name")
@@ -43,14 +48,28 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToMany
-    @JoinTable(name = "users_friends",
-        joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "friend_id", referencedColumnName = "id"))
     private Set<User> friends;
 
-    public void setId(int id) {
-        this.id = id;
+    public User() {
+        this.friends = new HashSet<>();
+    }
+
+    @Override
+    public String toString() {
+        return "User{ " + super.getId()+
+                " username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", registeredOn=" + registeredOn +
+                ", lastTimeLoggedIn=" + lastTimeLoggedIn +
+                ", age=" + age +
+                ", isDeleted=" + isDeleted +
+                ", bornTown=" + bornTown +
+                ", currentlyLivingTown=" + currentlyLivingTown +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", friends=" + friends +
+                '}';
     }
 
     public String getUsername() {
@@ -109,6 +128,7 @@ public class User {
         isDeleted = deleted;
     }
 
+    @ManyToOne
     public Town getBornTown() {
         return bornTown;
     }
@@ -117,6 +137,7 @@ public class User {
         this.bornTown = bornTown;
     }
 
+    @ManyToOne
     public Town getCurrentlyLivingTown() {
         return currentlyLivingTown;
     }
@@ -141,10 +162,10 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getId() {
-        return id;
-    }
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "users_friends",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "friend_id", referencedColumnName = "id"))
     public Set<User> getFriends() {
         return friends;
     }
