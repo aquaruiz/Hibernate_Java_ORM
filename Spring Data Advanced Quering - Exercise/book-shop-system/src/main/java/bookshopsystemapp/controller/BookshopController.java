@@ -1,6 +1,7 @@
 package bookshopsystemapp.controller;
 
 import bookshopsystemapp.domain.entities.EditionType;
+import bookshopsystemapp.domain.interfaces.ReducedBook;
 import bookshopsystemapp.service.AuthorService;
 import bookshopsystemapp.service.BookService;
 import bookshopsystemapp.service.CategoryService;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @Controller
 public class BookshopController implements CommandLineRunner {
@@ -77,6 +79,7 @@ public class BookshopController implements CommandLineRunner {
                 this.removeBooks();
                 break;
             case 14:
+                this.callStoredProcedure();
                 break;
             default:
                 break;
@@ -150,10 +153,22 @@ public class BookshopController implements CommandLineRunner {
     }
 
     private void countTotalBookCopies() {
-        
+        List<String> results = this.bookService.getCopiesByAuthor();
+        printResultList(results);
     }
 
     private void doReducedBook() {
+        System.out.print("Enter your title: ");
+        String bookTitle = scanner.nextLine().trim();
+        List<ReducedBook> books = this.bookService.getReducedBookByTitle(bookTitle);
+        printResultList(books.stream()
+                .map(b -> String.format("%s %s %s %s",
+                        b.getTitle(),
+                        b.getEditionType().name(),
+                        b.getAgeRestriction().name(),
+                        b.getPrice()
+                ))
+                .collect(Collectors.toList()));
     }
 
     private void increaseBookCopies() {

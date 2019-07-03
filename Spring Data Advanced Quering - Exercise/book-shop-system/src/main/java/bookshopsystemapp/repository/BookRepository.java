@@ -4,6 +4,7 @@ import bookshopsystemapp.domain.entities.AgeRestriction;
 import bookshopsystemapp.domain.entities.Author;
 import bookshopsystemapp.domain.entities.Book;
 import bookshopsystemapp.domain.entities.EditionType;
+import bookshopsystemapp.domain.interfaces.ReducedBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -36,4 +37,17 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     @Query("SELECT b FROM books b WHERE LENGTH(b.title) > :minNum")
     List<Book> getAllByTitleLength(@Param(value = "minNum") int minNumber);
+
+    @Query("SELECT CONCAT(b.author.firstName, ' ', b.author.lastName, ' - ', SUM(b.copies)) " +
+            "FROM books AS b " +
+            "GROUP BY b.author " +
+            "ORDER BY SUM(b.copies) DESC")
+    List<String> getTotalNumbersOfBookCopiesByAuthorDesc();
+
+    @Query("SELECT b.title, b.editionType, b.ageRestriction, b.price " +
+            "FROM books AS b " +
+            "WHERE b.title LIKE :title ")
+    List<ReducedBook> getBookByTitle(@Param(value = "title") String bookTitle);
+
+    List<Book> findAllByTitleLike(String title);
 }

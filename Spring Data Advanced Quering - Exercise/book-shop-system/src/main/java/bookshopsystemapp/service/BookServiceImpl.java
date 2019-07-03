@@ -1,6 +1,7 @@
 package bookshopsystemapp.service;
 
 import bookshopsystemapp.domain.entities.*;
+import bookshopsystemapp.domain.interfaces.ReducedBook;
 import bookshopsystemapp.repository.AuthorRepository;
 import bookshopsystemapp.repository.BookRepository;
 import bookshopsystemapp.repository.CategoryRepository;
@@ -213,5 +214,28 @@ public class BookServiceImpl implements BookService {
     public int getCountTitlesLongerThan(int minNumber) {
         List<Book> books = this.bookRepository.getAllByTitleLength(minNumber);
         return books.size();
+    }
+
+    @Override
+    public List<String> getCopiesByAuthor() {
+//        List<String> list = this.bookRepository.getTotalNumbersOfBookCopiesByAuthorDesc();
+//        List<String> list = this.authorRepository.getCopiesByAuthorName();
+        List<String> list = this.authorRepository.getCopiesByAuthorNameSecondTry();
+        return list;
+    }
+
+    @Override
+    public List<ReducedBook> getReducedBookByTitle(String bookTitle) {
+        List<Book> books = this.bookRepository.findAllByTitleLike(bookTitle);
+        return books.stream()
+                .map(b -> {
+                    ReducedBook r = new ReducedBook();
+                    r.setTitle(b.getTitle());
+                    r.setAgeRestriction(b.getAgeRestriction());
+                    r.setEditionType(b.getEditionType());
+                    r.setPrice(b.getPrice());
+                    return  r;
+                })
+                .collect(Collectors.toList());
     }
 }

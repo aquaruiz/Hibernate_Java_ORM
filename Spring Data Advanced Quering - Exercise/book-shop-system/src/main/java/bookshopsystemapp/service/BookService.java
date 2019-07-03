@@ -1,6 +1,7 @@
 package bookshopsystemapp.service;
 
 import bookshopsystemapp.domain.entities.EditionType;
+import bookshopsystemapp.domain.interfaces.ReducedBook;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -32,4 +33,8 @@ public interface BookService {
     List<String> findBooksByAuthorLastNameContains(String letters);
 
     int getCountTitlesLongerThan(int minNumber);
+
+    List<String> getCopiesByAuthor();
+
+    List<ReducedBook> getReducedBookByTitle(String bookTitle);
 }
