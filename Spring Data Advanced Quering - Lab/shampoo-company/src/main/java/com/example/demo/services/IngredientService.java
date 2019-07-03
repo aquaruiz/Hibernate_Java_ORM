@@ -1,31 +1,21 @@
 package com.example.demo.services;
 
 import com.example.demo.domain.entities.Ingredient;
-import com.example.demo.repositories.IngredientRepository;
-import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
-@Service
-public class IngredientService {
-    private final IngredientRepository ingredientRepository;
+public interface IngredientService {
+  List<String> selectIngredientByName(String startingLetters);
 
-    public IngredientService(IngredientRepository ingredientRepository) {
-        this.ingredientRepository = ingredientRepository;
-    }
+  List<String> selectIngredientByNameIn(List<String> ingredientsList);
 
-    public List<String> selectIngredientByName(String startingLetters) {
-        List<Ingredient> foundIngredients = this.ingredientRepository.findAllByNameStartsWith(startingLetters);
-        return foundIngredients.stream()
-                .map(s -> s.getName())
-                .collect(Collectors.toList());
-    }
+  Set<Ingredient> getIngredientsByName(List<String> ingredientsList);
 
-    public List<String> selectIngredientByNameIn(List<String> ingredientsList) {
-        List<Ingredient> foundIngredients = this.ingredientRepository.findAllByNameInOrderByPriceAsc(ingredientsList);
-        return foundIngredients.stream()
-                .map(s -> s.getName())
-                .collect(Collectors.toList());
-    }
+  void deleteIngredientsByName(String ingredientName);
+
+  void increaseAllPricesByRate(BigDecimal increaseRate);
+
+  void increaseAllPricesInNamesByRate(List<String> ingredientNamesList, BigDecimal increaseRate);
 }

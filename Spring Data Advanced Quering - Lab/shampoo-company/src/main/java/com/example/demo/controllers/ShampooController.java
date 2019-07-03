@@ -1,13 +1,18 @@
 package com.example.demo.controllers;
 
+import com.example.demo.domain.entities.Ingredient;
 import com.example.demo.services.IngredientService;
+import com.example.demo.services.IngredientServiceImpl;
 import com.example.demo.services.ShampooService;
+import com.example.demo.services.ShampooServiceImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 @Controller
 public class ShampooController implements CommandLineRunner {
@@ -20,7 +25,6 @@ public class ShampooController implements CommandLineRunner {
         this.ingredientService = ingredientService;
         this.scanner = new Scanner(System.in);
     }
-
 
     @Override
     public void run(String... args) throws Exception {
@@ -40,15 +44,74 @@ public class ShampooController implements CommandLineRunner {
 //        this.selectIngredientByNameIn();
 
         // Task 6
-        this.countShampoosByPrice();
-        // Task 7
-        // Task 8
-        // Task 9
-        // Task 10
-        // Task 11
-        // Task 12
-        // Task 13
+//        this.countShampoosByPrice();
 
+        // Task 7
+//        this.selectShampoosByIngredients();
+
+        // Task 8
+//        this.selectShampoosByIngredientsCount();
+
+        // Task 9
+//       this.selectIngredientNameAndShampooBrandByName();
+       
+        // Task 10
+//        this.deleteIngredientsByName();
+        
+        // Task 11
+//        this.updateIngredientsByPrice();
+
+        // Task 12
+//        this.updateIngredientsPricesBbyNames();
+    }
+
+    private void updateIngredientsPricesBbyNames() {
+        List<String> ingredientNamesList = new ArrayList<>();
+        String line;
+        while (!(line = scanner.nextLine()).equals("")){
+            ingredientNamesList.add(line);
+        }
+
+        BigDecimal increaseRate = new BigDecimal(0.1);
+        this.ingredientService.increaseAllPricesInNamesByRate(ingredientNamesList, increaseRate);
+    }
+
+    private void updateIngredientsByPrice() {
+        BigDecimal increaseRate = new BigDecimal(0.1);
+        this.ingredientService.increaseAllPricesByRate(increaseRate);
+    }
+
+    private void deleteIngredientsByName() {
+        String ingredientName = scanner.nextLine();
+
+        this.ingredientService.deleteIngredientsByName(ingredientName);
+    }
+
+    private void selectIngredientNameAndShampooBrandByName() {
+        String shampooBrandName = scanner.nextLine();
+
+        String totalIngredientsPrice = this.shampooService
+                .selectIngredientNamePriceAndShampooBrandByName(shampooBrandName);
+        System.out.println(totalIngredientsPrice);
+    }
+
+    private void selectShampoosByIngredientsCount() {
+        Integer count = Integer.parseInt(scanner.nextLine());
+
+        List<String> shampoos = this.shampooService.getShampoosByIngredientsCount(count);
+        shampoos.forEach(System.out::println);
+    }
+
+    private void selectShampoosByIngredients() {
+        List<String> ingredientsList = new ArrayList<>();
+        String line;
+        while (!(line = scanner.nextLine()).equals("")){
+            ingredientsList.add(line);
+        }
+
+        Set<Ingredient> ingredientSet = this.ingredientService.getIngredientsByName(ingredientsList);
+        List<String> shampoos = this.shampooService.selectShampoosByIngredients(ingredientSet);
+        shampoos.forEach(System.out::println);
     }
 
     private void countShampoosByPrice() {
@@ -96,5 +159,4 @@ public class ShampooController implements CommandLineRunner {
 
         shampoos.forEach(System.out::println);
     }
-
 }

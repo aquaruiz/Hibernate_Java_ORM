@@ -1,69 +1,23 @@
 package com.example.demo.services;
 
-import com.example.demo.domain.entities.Label;
-import com.example.demo.domain.entities.Shampoo;
-import com.example.demo.domain.entities.Size;
-import com.example.demo.repositories.LabelRepository;
-import com.example.demo.repositories.ShampooRepository;
-import org.springframework.stereotype.Service;
+import com.example.demo.domain.entities.Ingredient;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
-@Service
-public class ShampooService {
-    private final ShampooRepository shampooRepository;
-    private final LabelRepository labelRepository;
+public interface ShampooService {
 
-    public ShampooService(ShampooRepository shampooRepository, LabelRepository labelRepository) {
-        this.shampooRepository = shampooRepository;
-        this.labelRepository = labelRepository;
-    }
+    List<String> selectShampooBySize(String sizeType);
 
-    public List<String> selectShampooBySize(String sizeType) {
-        Size size = Size.valueOf(sizeType.toUpperCase());
+    List<String> selectShampooBySizeAndLabel(String sizeType, String labelType);
 
-        List<Shampoo> foundShampoos = this.shampooRepository.findAllBySizeOrderById(size);
-        return foundShampoos.stream()
-                .map(s -> String.format("%s %s %s lv.",
-                        s.getBrand(),
-                        s.getSize().name(),
-                        s.getPrice()))
-                .collect(Collectors.toList());
-    }
+    List<String> selectShampooByPrice(String priceString);
 
-    public List<String> selectShampooBySizeAndLabel(String sizeType, String labelType) {
-        Size size = Size.valueOf(sizeType.toUpperCase());
-        Long labelId = Long.parseLong(labelType);
-        Label label = this.labelRepository.findById(labelId).orElse(null);
+    Integer countShampoosByPrice(String boundryPriceString);
 
-        List<Shampoo> foundShampoos = this.shampooRepository.findAllBySizeOrLabelOrderByPriceAsc(size, label);
-        return foundShampoos.stream()
-                .map(s -> String.format("%s %s %s lv.",
-                        s.getBrand(),
-                        s.getSize().name(),
-                        s.getPrice()))
-                .collect(Collectors.toList());
+    List<String> selectShampoosByIngredients(Set<Ingredient> ingredientSet);
 
-    }
+    List<String> getShampoosByIngredientsCount(Integer count);
 
-    public List<String> selectShampooByPrice(String priceString) {
-        BigDecimal price = new BigDecimal(priceString);
-
-        List<Shampoo> foundShampoos = this.shampooRepository.findAllByPriceAfterOrderByPriceDesc(price);
-        return foundShampoos.stream()
-                .map(s -> String.format("%s %s %s lv.",
-                        s.getBrand(),
-                        s.getSize().name(),
-                        s.getPrice()))
-                .collect(Collectors.toList());
-
-    }
-
-    public Integer countShampoosByPrice(String boundryPriceString) {
-        BigDecimal price = new BigDecimal(boundryPriceString);
-        Integer count = this.shampooRepository.countAllByPriceBefore(price);
-        return count;
-    }
+    String selectIngredientNamePriceAndShampooBrandByName(String shampooBrandName);
 }
