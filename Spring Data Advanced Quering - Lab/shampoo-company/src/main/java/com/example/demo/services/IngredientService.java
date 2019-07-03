@@ -1,8 +1,6 @@
 package com.example.demo.services;
 
 import com.example.demo.domain.entities.Ingredient;
-import com.example.demo.domain.entities.Shampoo;
-import com.example.demo.domain.entities.Size;
 import com.example.demo.repositories.IngredientRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +22,8 @@ public class IngredientService {
                 .collect(Collectors.toList());
     }
 
-    public List<String> selectIngredientByNameContains(String startingLetters) {
-        startingLetters = startingLetters.toLowerCase();
-        List<Ingredient> foundIngredients = this.ingredientRepository.findAllByNameContains(startingLetters);
+    public List<String> selectIngredientByNameIn(List<String> ingredientsList) {
+        List<Ingredient> foundIngredients = this.ingredientRepository.findAllByNameInOrderByPriceAsc(ingredientsList);
         return foundIngredients.stream()
                 .map(s -> s.getName())
                 .collect(Collectors.toList());

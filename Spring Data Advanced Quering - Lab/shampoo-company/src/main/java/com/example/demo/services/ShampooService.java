@@ -60,4 +60,10 @@ public class ShampooService {
                 .collect(Collectors.toList());
 
     }
+
+    public Integer countShampoosByPrice(String boundryPriceString) {
+        BigDecimal price = new BigDecimal(boundryPriceString);
+        Integer count = this.shampooRepository.countAllByPriceBefore(price);
+        return count;
+    }
 }

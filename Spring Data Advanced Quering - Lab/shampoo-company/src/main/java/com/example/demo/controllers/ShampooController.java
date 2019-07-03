@@ -5,6 +5,7 @@ import com.example.demo.services.ShampooService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,12 +34,13 @@ public class ShampooController implements CommandLineRunner {
 //        this.selectShampoosByPrice();
 
         // Task 4
-        this.selectIngredientByNameStarts();
+//        this.selectIngredientByNameStarts();
 
         // Task 5
-        this.selectIngredientByNameContains();
+//        this.selectIngredientByNameIn();
 
         // Task 6
+        this.countShampoosByPrice();
         // Task 7
         // Task 8
         // Task 9
@@ -49,10 +51,20 @@ public class ShampooController implements CommandLineRunner {
 
     }
 
-    private void selectIngredientByNameContains() {
-        String startingLetters = scanner.nextLine();
-        List<String> ingredients = this.ingredientService.selectIngredientByNameContains(startingLetters);
+    private void countShampoosByPrice() {
+        String boundryPriceString = scanner.nextLine();
+        Integer count = this.shampooService.countShampoosByPrice(boundryPriceString);
+        System.out.println(count);
+    }
 
+    private void selectIngredientByNameIn() {
+        List<String> ingredientsList = new ArrayList<>();
+        String line;
+        while (!(line = scanner.nextLine()).equals("")){
+            ingredientsList.add(line);
+        }
+
+        List<String> ingredients = this.ingredientService.selectIngredientByNameIn(ingredientsList);
         ingredients.forEach(System.out::println);
     }
 

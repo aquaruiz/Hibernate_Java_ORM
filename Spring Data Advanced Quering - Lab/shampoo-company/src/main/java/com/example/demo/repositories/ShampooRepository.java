@@ -18,4 +18,6 @@ public interface ShampooRepository extends JpaRepository<Shampoo, Long> {
     List<Shampoo> findAllBySizeOrLabelOrderByPriceAsc(Size size, Label label);
 
     List<Shampoo> findAllByPriceAfterOrderByPriceDesc(BigDecimal price);
+
+    Integer countAllByPriceBefore(BigDecimal price);
 }
