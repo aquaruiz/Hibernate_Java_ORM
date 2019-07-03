@@ -10,4 +10,8 @@ import java.util.Optional;
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
     List<Author> findAllByFirstName(String name);
+
+    List<Author> findAllByFirstNameEndsWith(String letters);
+
+    List<Author> findAllByLastNameStartsWith(String letters);
 }

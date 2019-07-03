@@ -12,12 +12,10 @@ import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -129,5 +127,91 @@ public class BookServiceImpl implements BookService {
         int randomId = random.nextInt((int) (this.categoryRepository.count() - 1)) + 1;
 
         return this.categoryRepository.findById(randomId).orElse(null);
+    }
+
+    @Override
+    public long getRecordsCount() {
+        return this.bookRepository.count();
+    }
+
+    @Override
+    public List<String> getBooksTitlesByAgeRestriction(String ageRestrictionString) {
+        AgeRestriction ageRestriction = AgeRestriction.valueOf(ageRestrictionString.toUpperCase());
+        List<Book> books = this.bookRepository.findAllByAgeRestriction(ageRestriction);
+
+        return books.stream()
+                .map(b -> b.getTitle())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getBookByCount(EditionType editionType, int copiesCount) {
+        List<Book> books = this.bookRepository
+                .findAllByEditionTypeIsAndCopiesIsBefore(editionType, copiesCount);
+        return books.stream()
+                .map(b -> b.getTitle())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getBooksByPriceOutsideBoundaries(int lowerPriceBoundary, int upperPriceBoundary) {
+        BigDecimal lower = new BigDecimal(lowerPriceBoundary);
+        BigDecimal upper = new BigDecimal(upperPriceBoundary);
+        List<Book> books = this.bookRepository.findAllByPriceLessThanOrPriceGreaterThan(lower, upper);
+        return books.stream()
+                .map(b -> String.format("%s - $%s",
+                        b.getTitle(),
+                        b.getPrice()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getAllNotReleasedByYear(String year) throws ParseException {
+        int boundaryYear = Integer.parseInt(year);
+        LocalDate startDate = LocalDate.of(boundaryYear, 1, 1);
+        LocalDate endDate = LocalDate.of(boundaryYear, 12, 31);
+        List<Book> books = this.bookRepository.findAllByReleaseDateBeforeOrReleaseDateAfter(startDate, endDate);
+        return books.stream()
+                .map(b -> b.getTitle())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getBooksByReleaseDate(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy");
+        LocalDate localDate = LocalDate.parse(dateString, formatter);
+        List<Book> books = this.bookRepository.findAllByReleaseDateBefore(localDate);
+        return books.stream()
+                .map(b -> String.format("%s %s %s",
+                        b.getTitle(),
+                        b.getEditionType().name(),
+                        b.getPrice()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> findBooksByNameContains(String letters) {
+        List<Book> books = this.bookRepository.findAllByTitleContains(letters);
+        return books.stream()
+                .map(b -> b.getTitle())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> findBooksByAuthorLastNameContains(String letters) {
+        List<Author> authors = this.authorRepository.findAllByLastNameStartsWith(letters);
+        List<Book> books = this.bookRepository.findAllByAuthorIn(authors);
+        return books.stream()
+                .map(b -> String.format("%s (%s %S)",
+                        b.getTitle(),
+                        b.getAuthor().getFirstName(),
+                        b.getAuthor().getLastName()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public int getCountTitlesLongerThan(int minNumber) {
+        List<Book> books = this.bookRepository.getAllByTitleLength(minNumber);
+        return books.size();
     }
 }

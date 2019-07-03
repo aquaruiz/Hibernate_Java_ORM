@@ -1,6 +1,9 @@
 package bookshopsystemapp.service;
 
+import bookshopsystemapp.domain.entities.EditionType;
+
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Set;
 
@@ -11,4 +14,22 @@ public interface BookService {
     List<String> getAllBooksTitlesAfter();
 
     Set<String> getAllAuthorsWithBookBefore();
+
+    long getRecordsCount();
+
+    List<String> getBooksTitlesByAgeRestriction(String ageRestrictionString);
+
+    List<String> getBookByCount(EditionType editionType,int copiesCount);
+
+    List<String> getBooksByPriceOutsideBoundaries(int lowerPriceBoundary, int upperPriceBoundary);
+
+    List<String> getAllNotReleasedByYear(String year) throws ParseException;
+
+    List<String> getBooksByReleaseDate(String dateString);
+
+    List<String> findBooksByNameContains(String letters);
+
+    List<String> findBooksByAuthorLastNameContains(String letters);
+
+    int getCountTitlesLongerThan(int minNumber);
 }

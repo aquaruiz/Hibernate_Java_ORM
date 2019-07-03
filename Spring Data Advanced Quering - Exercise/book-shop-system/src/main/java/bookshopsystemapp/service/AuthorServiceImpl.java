@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -44,5 +46,20 @@ public class AuthorServiceImpl implements AuthorService {
 
             this.authorRepository.saveAndFlush(author);
         }
+    }
+
+    @Override
+    public long getRecordsCount() {
+        return this.authorRepository.count();
+    }
+
+    @Override
+    public List<String> getAuthorsByNameEnds(String letters) {
+        List<Author> authors = this.authorRepository.findAllByFirstNameEndsWith(letters);
+        return authors.stream()
+                .map(a -> String.format("%s %s",
+                        a.getFirstName(),
+                        a.getLastName()))
+                .collect(Collectors.toList());
     }
 }

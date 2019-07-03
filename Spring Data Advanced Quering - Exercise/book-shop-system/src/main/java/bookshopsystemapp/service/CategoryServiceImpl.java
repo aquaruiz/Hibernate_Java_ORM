@@ -42,4 +42,9 @@ public class CategoryServiceImpl implements CategoryService {
             this.categoryRepository.saveAndFlush(category);
         }
     }
+
+    @Override
+    public long getRecordsCount() {
+        return this.categoryRepository.count();
+    }
 }
