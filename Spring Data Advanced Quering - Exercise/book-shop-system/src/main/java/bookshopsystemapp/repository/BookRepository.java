@@ -50,4 +50,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<ReducedBook> getBookByTitle(@Param(value = "title") String bookTitle);
 
     List<Book> findAllByTitleLike(String title);
+
+    List<Book> findAllByCopiesIsBefore(int count);
 }

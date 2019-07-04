@@ -37,4 +37,8 @@ public interface BookService {
     List<String> getCopiesByAuthor();
 
     List<ReducedBook> getReducedBookByTitle(String bookTitle);
+
+    int increaseBookCountBySince(String countString, String dateString);
+
+    int deleteBooksWithCopiesUnder(String countString);
 }

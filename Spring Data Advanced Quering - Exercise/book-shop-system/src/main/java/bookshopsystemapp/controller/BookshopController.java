@@ -92,7 +92,6 @@ public class BookshopController implements CommandLineRunner {
         printResultList(books);
     }
 
-
     private void getGoldenBooks() {
         int copiesCount = 5000;
         EditionType editionType = EditionType.valueOf("GOLD");
@@ -172,9 +171,34 @@ public class BookshopController implements CommandLineRunner {
     }
 
     private void increaseBookCopies() {
+        System.out.print("Enter boundary date in format (dd-MMM-yyyy): ");
+        String dateString = scanner.nextLine();
+        System.out.print("Enter quantity to increase by: ");
+        String countString = scanner.nextLine();
+
+        int increasedCount = this.bookService.increaseBookCountBySince(countString, dateString);
+
+        System.out.println(increasedCount);
+        System.out.println(String
+                .format("%d books are released after %s, so total of %d book copies were added",
+                        increasedCount / Integer.parseInt(countString),
+                        dateString,
+                        increasedCount));
     }
 
     private void removeBooks() {
+        System.out.print("Enter boundary copies quantity: ");
+        String countString = scanner.nextLine();
+        int deletedBooksCount = this.bookService.deleteBooksWithCopiesUnder(countString);
+
+        if (deletedBooksCount > 0){
+            System.out.println(deletedBooksCount + " books with copies count under " + countString + " have been deleted.");
+        } else {
+            System.out.println("No books with copies count under " + countString + " have been found.");
+        }
+    }
+
+    private void callStoredProcedure() {
     }
 
     private void populateDb() throws IOException {

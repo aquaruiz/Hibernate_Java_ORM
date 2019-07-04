@@ -238,4 +238,30 @@ public class BookServiceImpl implements BookService {
                 })
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public int increaseBookCountBySince(String countString, String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+        LocalDate boundaryDate = LocalDate.parse(dateString, formatter);
+
+        int countToIncreaseBy = Integer.parseInt(countString);
+
+        List<Book> booksToIncrease = this.bookRepository.findAllByReleaseDateAfter(boundaryDate);
+        booksToIncrease.forEach(b -> b.setCopies(b.getCopies() + countToIncreaseBy));
+        this.bookRepository.saveAll(booksToIncrease);
+        this.bookRepository.flush();
+
+        return booksToIncrease.size() * countToIncreaseBy;
+    }
+
+    @Override
+    @Transactional
+    public int deleteBooksWithCopiesUnder(String countString) {
+        int countBoundary = Integer.parseInt(countString);
+        List<Book> booksToDelete = this.bookRepository.findAllByCopiesIsBefore(countBoundary);
+
+        this.bookRepository.deleteInBatch(booksToDelete);
+        this.bookRepository.flush();
+        return booksToDelete.size();
+    }
 }
