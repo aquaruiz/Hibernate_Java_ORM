@@ -124,7 +124,6 @@ public class BookServiceImpl implements BookService {
 
     private Category getRandomCategory() {
         Random random = new Random();
-
         int randomId = random.nextInt((int) (this.categoryRepository.count() - 1)) + 1;
 
         return this.categoryRepository.findById(randomId).orElse(null);
@@ -179,7 +178,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<String> getBooksByReleaseDate(String dateString) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate = LocalDate.parse(dateString, formatter);
         List<Book> books = this.bookRepository.findAllByReleaseDateBefore(localDate);
         return books.stream()
@@ -263,5 +262,12 @@ public class BookServiceImpl implements BookService {
         this.bookRepository.deleteInBatch(booksToDelete);
         this.bookRepository.flush();
         return booksToDelete.size();
+    }
+
+    @Override
+    public int callProcedure(String firstName, String lastName) {
+//        int output = this.bookRepository.callProcedure(firstName, lastName);
+        int output = this.bookRepository.callProcedureSecondTry(firstName, lastName);
+        return output;
     }
 }

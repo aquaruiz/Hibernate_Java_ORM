@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static java.lang.System.exit;
+
 @Controller
 public class BookshopController implements CommandLineRunner {
 
@@ -34,56 +36,79 @@ public class BookshopController implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         this.populateDb();
+        System.out.println("Hello!");
+        System.out.println("Just filled DB with data....");
 
-        System.out.print("Please enter a task number: ");
-        int taskNum = Integer.parseInt(scanner.nextLine());
+        chooseTaskToRun();
+    }
 
-        switch (taskNum){
-            case 1:
-                this.getBooksTitlesByAgeRestriction();
-                break;
-            case 2:
-                this.getGoldenBooks();
-                break;
-            case 3:
-                this.getBooksByPrice();
-                break;
-            case 4:
-                this.getNotReleasedBooks();
-                break;
-            case 5:
-                this.getBooksReleasedBeforeDate();
-                break;
-            case 6:
-                this.doAuthorsSearch();
-                break;
-            case 7:
-                this.doBookSearch();
-                break;
-            case 8:
-                this.doBookTitlesSearch();
-                break;
-            case 9:
-                this.countBooksByTitleLength();
-                break;
-            case 10:
-                this.countTotalBookCopies();
-                break;
-            case 11:
-                this.doReducedBook();
-                break;
-            case 12:
-                this.increaseBookCopies();
-                break;
-            case 13:
-                this.removeBooks();
-                break;
-            case 14:
-                this.callStoredProcedure();
-                break;
-            default:
-                break;
+    private void chooseTaskToRun() throws ParseException {
+        while (true){
+            System.out.print("Please enter a task number: ");
+            int taskNum = Integer.parseInt(scanner.nextLine());
+
+            switch (taskNum){
+                case 1:
+                    this.getBooksTitlesByAgeRestriction();
+                    break;
+                case 2:
+                    this.getGoldenBooks();
+                    break;
+                case 3:
+                    this.getBooksByPrice();
+                    break;
+                case 4:
+                    this.getNotReleasedBooks();
+                    break;
+                case 5:
+                    this.getBooksReleasedBeforeDate();
+                    break;
+                case 6:
+                    this.doAuthorsSearch();
+                    break;
+                case 7:
+                    this.doBookSearch();
+                    break;
+                case 8:
+                    this.doBookTitlesSearch();
+                    break;
+                case 9:
+                    this.countBooksByTitleLength();
+                    break;
+                case 10:
+                    this.countTotalBookCopies();
+                    break;
+                case 11:
+                    this.doReducedBook();
+                    break;
+                case 12:
+                    this.increaseBookCopies();
+                    break;
+                case 13:
+                    this.removeBooks();
+                    break;
+                case 14:
+                    this.callStoredProcedure();
+                    break;
+                default:
+                    checkWannaContinue();
+                    break;
+            }
+
+            checkWannaContinue();
         }
+    }
+
+    private void checkWannaContinue() throws ParseException {
+        System.out.print("Wanna continue? (Y / N)");
+        String userInput = scanner.nextLine().trim().toLowerCase();
+
+        if(!userInput.equals("n")){
+            chooseTaskToRun();
+        }
+
+        System.out.println("BYE!");
+        exit(0);
     }
 
     private void getBooksTitlesByAgeRestriction() {
@@ -114,7 +139,7 @@ public class BookshopController implements CommandLineRunner {
     }
 
     private void getBooksReleasedBeforeDate() {
-        System.out.print("Enter your date in format d/M/yyyy: ");
+        System.out.print("Enter your date in format dd-MM-yyyy: ");
         String dateString = scanner.nextLine();
         List<String> books = this.bookService.getBooksByReleaseDate(dateString);
         printResultList(books);
@@ -199,6 +224,15 @@ public class BookshopController implements CommandLineRunner {
     }
 
     private void callStoredProcedure() {
+        System.out.print("Please enter author first and last name: ");
+        String[] input = scanner.nextLine().split("\\s+");
+        String firstName = input[0];
+        String lastName = input[1];
+        int output = this.bookService.callProcedure(firstName, lastName);
+        System.out.println(String.format("%s %s has written %d books",
+                firstName,
+                lastName,
+                output));
     }
 
     private void populateDb() throws IOException {

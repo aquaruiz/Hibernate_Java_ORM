@@ -41,4 +41,6 @@ public interface BookService {
     int increaseBookCountBySince(String countString, String dateString);
 
     int deleteBooksWithCopiesUnder(String countString);
+
+    int callProcedure(String firstName, String lastName);
 }

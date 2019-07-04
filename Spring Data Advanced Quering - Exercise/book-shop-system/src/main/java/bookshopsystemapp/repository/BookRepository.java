@@ -52,4 +52,12 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Book> findAllByTitleLike(String title);
 
     List<Book> findAllByCopiesIsBefore(int count);
+
+    @Query(value = "call usp_get_books_count_by_author_name(:first_name, :last_name)",
+            nativeQuery = true)
+    int callProcedure(@Param(value = "first_name") String firstName, @Param(value = "last_name") String lastName);
+
+    @Query(value = "call usp_get_books_count_by_author_name(?1, ?2)",
+            nativeQuery = true)
+    int callProcedureSecondTry(String firstName, String lastName);
 }
