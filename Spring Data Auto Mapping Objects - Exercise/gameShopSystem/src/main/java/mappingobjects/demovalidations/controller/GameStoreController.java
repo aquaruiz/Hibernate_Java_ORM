@@ -1,7 +1,9 @@
 package mappingobjects.demovalidations.controller;
 
+import mappingobjects.demovalidations.domain.dto.GameAddDto;
 import mappingobjects.demovalidations.domain.dto.UserLoginDto;
 import mappingobjects.demovalidations.domain.dto.UserRegisterDto;
+import mappingobjects.demovalidations.service.GameService;
 import mappingobjects.demovalidations.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,11 +14,13 @@ import java.util.Scanner;
 @Controller
 public class GameStoreController implements CommandLineRunner {
     private final UserService userService;
+    private final GameService gameService;
     private final Scanner scanner;
 
     @Autowired
-    public GameStoreController(UserService userService) {
+    public GameStoreController(UserService userService, GameService gameService) {
         this.userService = userService;
+        this.gameService = gameService;
         this.scanner = new Scanner(System.in);
     }
 
@@ -43,6 +47,14 @@ public class GameStoreController implements CommandLineRunner {
                 case "logout":
                     output = this.userService.logoutUser();
                     System.out.println(output);
+                    break;
+                case "addgame":
+                    GameAddDto gameAddDto = new GameAddDto();
+                    this.gameService.addGame(gameAddDto);
+                    break;
+                case "editgame":
+                    break;
+                case "deletegame":
                     break;
                 default:
                     break;

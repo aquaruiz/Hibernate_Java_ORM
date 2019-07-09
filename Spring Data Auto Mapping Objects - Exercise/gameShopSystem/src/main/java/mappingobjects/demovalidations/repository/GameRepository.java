@@ -1,4 +1,8 @@
 package mappingobjects.demovalidations.repository;
 
-public interface GameRepository {
+import mappingobjects.demovalidations.domain.entity.Game;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GameRepository extends JpaRepository<Game, Integer> {
+
 }

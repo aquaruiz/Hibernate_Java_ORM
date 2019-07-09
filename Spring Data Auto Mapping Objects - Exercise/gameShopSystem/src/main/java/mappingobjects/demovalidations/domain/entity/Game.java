@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
@@ -25,6 +26,7 @@ public class Game extends BaseEntity {
     }
 
     @Column(nullable = false, unique = true)
+    @Pattern(regexp = "[A-Z][a-z]{2,99}", message = "Title did not passed validation - starts with capital and it's between 3 and 100 letters.")
     public String getTitle() {
         return title;
     }
@@ -33,7 +35,7 @@ public class Game extends BaseEntity {
         this.title = title;
     }
 
-    @Column(unique = true)
+    @Column(unique = true, precision = 19, scale = 2)
     public String getTrailer() {
         return trailer;
     }
@@ -42,7 +44,7 @@ public class Game extends BaseEntity {
         this.trailer = trailer;
     }
 
-    @Column(name = "image_thumbnail", nullable = true, unique = true)
+    @Column(name = "image_thumbnail", unique = true)
     public String getImageThumbnail() {
         return imageThumbnail;
     }
