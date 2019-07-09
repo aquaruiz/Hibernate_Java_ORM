@@ -3,25 +3,34 @@ package mappingobjects.demovalidations.domain.dto;
 import mappingobjects.demovalidations.domain.entity.BaseEntity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class GameAddDto extends BaseEntity {
     private String title;
+    private BigDecimal price;
+    private double size;
     private String trailer;
     private String imageThumbnail;
-    private double size;
-    private BigDecimal price;
     private String description;
+    private LocalDate releaseDate;
 
     public GameAddDto() {
     }
 
-    public GameAddDto(String title, String trailer, String imageThumbnail, double size, BigDecimal price, String description) {
+    public GameAddDto(String title,
+                      BigDecimal price,
+                      double size,
+                      String trailer,
+                      String imageThumbnail,
+                      String description,
+                      LocalDate releaseDate) {
         this.title = title;
         this.trailer = trailer;
         this.imageThumbnail = imageThumbnail;
         this.size = size;
         this.price = price;
         this.description = description;
+        this.releaseDate = releaseDate;
     }
 
     public String getTitle() {
@@ -70,5 +79,13 @@ public class GameAddDto extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }

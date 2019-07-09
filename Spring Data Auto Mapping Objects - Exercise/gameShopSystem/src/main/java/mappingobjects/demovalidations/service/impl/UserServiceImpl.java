@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String registerUser(UserRegisterDto userRegisterDto) {
-        StringBuilder sb = new StringBuilder();
 
+        StringBuilder sb = new StringBuilder();
         User user = this.modelMapper.map(userRegisterDto, User.class);
 
         User inDb = this.userRepository.findByEmail(user.getEmail()).orElse(null);
