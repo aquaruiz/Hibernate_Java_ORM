@@ -85,6 +85,20 @@ public class GameStoreController implements CommandLineRunner {
                     output = this.gameService.getGamesByLoggedInUser();
                     System.out.print(output);
                     break;
+                case "purchase":
+                case "buygame":
+                case "buy":
+                case "purchasegame":
+                    try{
+                        gameId = Integer.parseInt(params[1]);
+                        output = this.gameService.purchaseGameById(gameId);
+                    } catch (Exception e){
+                        gameTitle = params[1];
+                        output = this.gameService.purchaseGameByTitle(gameTitle);
+                    }
+
+                    System.out.print(output);
+                    break;
                 case "exit":
                     System.out.println("Bye!");
                     exit(0);

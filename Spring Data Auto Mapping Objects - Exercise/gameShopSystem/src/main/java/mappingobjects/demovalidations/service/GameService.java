@@ -18,4 +18,8 @@ public interface GameService {
     String getGameByTitle(String gameTitle);
 
     String getGamesByLoggedInUser();
+
+    String purchaseGameById(Integer gameId);
+
+    String purchaseGameByTitle(String gameTitle);
 }

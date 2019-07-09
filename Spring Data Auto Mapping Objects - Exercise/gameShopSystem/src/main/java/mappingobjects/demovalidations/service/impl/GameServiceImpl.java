@@ -43,19 +43,7 @@ public class GameServiceImpl implements GameService {
 
         Game game = this.modelMapper.map(gameAddDto, Game.class);
 
-        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-        Validator validator = validatorFactory.getValidator();
-
-        Set<ConstraintViolation<Game>> violations = validator.validate(game);
-
-        if (violations.size() > 0){
-            for (ConstraintViolation<Game> violation : violations) {
-                sb.append(violation.getMessage())
-                  .append(System.lineSeparator());
-            }
-
-            return sb.toString();
-        }
+        if (validateGameEntity(sb, game)) return sb.toString();
 
         User user = this.userRepository.findByEmail(this.loggedInUser).orElse(null);
 
@@ -156,9 +144,29 @@ public class GameServiceImpl implements GameService {
             }
         }
 
+        if (validateGameEntity(sb, gameToEdit)) return sb.toString();
+
         this.gameRepository.saveAndFlush(gameToEdit);
         sb.append(String.format("%s edited", gameToEdit.getTitle()));
         return sb.toString();
+    }
+
+    private boolean validateGameEntity(StringBuilder sb, Game gameToEdit) {
+        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+
+        Set<ConstraintViolation<Game>> violations = validator.validate(gameToEdit);
+
+        if (violations.size() > 0) {
+            for (ConstraintViolation<Game> violation : violations) {
+                sb.append(violation.getMessage())
+                        .append(System.lineSeparator());
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
     @Override
@@ -242,6 +250,54 @@ public class GameServiceImpl implements GameService {
 
         Set<Game> userGames = user.getGames();
         userGames.forEach(g -> sb.append(g.getTitle()).append(System.lineSeparator()));
+        return sb.toString();
+    }
+
+    @Override
+    public String purchaseGameById(Integer gameId) {
+        StringBuilder sb = new StringBuilder();
+        User user = this.userRepository.findByEmail(this.loggedInUser).orElse(null);
+
+        if (user == null){
+            return  sb.append("Noone is logged in. Please log in").toString();
+        }
+
+        Game gameToPurchase = this.gameRepository.findById(gameId).orElse(null);
+
+        if (gameToPurchase == null){
+            return  sb.append(String.format("Game with Id %d doesn't exist.",
+                    gameId)).toString();
+        }
+
+        Set<Game> userGames = user.getGames();
+        userGames.add(gameToPurchase);
+        user.setGames(userGames);
+
+        this.userRepository.saveAndFlush(user);
+        return sb.toString();
+    }
+
+    @Override
+    public String purchaseGameByTitle(String gameTitle) {
+        StringBuilder sb = new StringBuilder();
+        User user = this.userRepository.findByEmail(this.loggedInUser).orElse(null);
+
+        if (user == null){
+            return  sb.append("Noone is logged in. Please log in").toString();
+        }
+
+        Game gameToPurchase = this.gameRepository.findByTitle(gameTitle).orElse(null);
+
+        if (gameToPurchase == null){
+            return  sb.append(String.format("Game with Id %d doesn't exist.",
+                    gameTitle)).toString();
+        }
+
+        Set<Game> userGames = user.getGames();
+        userGames.add(gameToPurchase);
+        user.setGames(userGames);
+
+        this.userRepository.saveAndFlush(user);
         return sb.toString();
     }
 
