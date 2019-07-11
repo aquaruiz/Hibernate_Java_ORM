@@ -10,5 +10,5 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findAllByPriceGreaterThanAndPriceLessThanAndBuyerOrderByPriceAsc(BigDecimal lower, BigDecimal upper, User buyer);
 
-    List<Product> findAllByBuyer(User user);
+    List<Product> findByBuyerIsNotNull();
 }

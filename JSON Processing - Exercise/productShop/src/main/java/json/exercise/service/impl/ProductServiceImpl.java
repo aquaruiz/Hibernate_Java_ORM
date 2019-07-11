@@ -3,7 +3,9 @@ package json.exercise.service.impl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import json.exercise.domain.dtos.ProductDto;
+import json.exercise.domain.dtos.UserDto;
 import json.exercise.domain.dtos.queryDtos.ProductInRangeDto;
+import json.exercise.domain.dtos.queryDtos.SoldProductDto;
 import json.exercise.domain.dtos.queryDtos.SuccessfullSellerDto;
 import json.exercise.domain.entities.Category;
 import json.exercise.domain.entities.Product;
@@ -182,16 +184,28 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void collectUsersWithSuccessfullySoldProducts() throws IOException {
-        List<Product> products = this.productRepository.findAllByBuyer(null);
-        List<User> sellers = products.stream()
-                                .map(p -> p.getSeller())
-                                .collect(Collectors.toList());
-        System.out.println(sellers.get(1).getAge());
+        List<User> sellers = this.userRepository.getAllSellers();
 
         List<SuccessfullSellerDto> sellerDtos = sellers.stream()
                                 .map(s -> modelMapper.map(s, SuccessfullSellerDto.class))
                                 .collect(Collectors.toList());
+
+        // implement inside lambda or in repo
+        for (SuccessfullSellerDto sellerDto : sellerDtos) {
+            List<SoldProductDto> sells = sellerDto.getSells();
+            List<SoldProductDto> sellsToRemove = new ArrayList<>();
+
+            for (SoldProductDto sell : sells) {
+                if (sell.getBuyerLastName() == null&& sell.getBuyerFirstName() == null){
+                    sellsToRemove.add(sell);
+                }
+            }
+
+            sells.removeAll(sellsToRemove);
+            sellerDto.setSells(sells);
+        }
 
         saveToJson(FILE_WRITE_PATH2, sellerDtos);
     }

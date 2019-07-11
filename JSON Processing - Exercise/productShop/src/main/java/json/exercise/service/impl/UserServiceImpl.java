@@ -2,7 +2,10 @@ package json.exercise.service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import json.exercise.domain.dtos.ProductDto;
 import json.exercise.domain.dtos.UserDto;
+import json.exercise.domain.dtos.queryDtos.query3.UserProductsDto;
+import json.exercise.domain.dtos.queryDtos.query3.UsersSoldProductsDto;
 import json.exercise.domain.entities.User;
 import json.exercise.repository.UserRepository;
 import json.exercise.service.UserService;
@@ -10,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -20,11 +24,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private final String FILE_PATH = "src" + File.separator +
+    private final String FOLDER_PATH = "src" + File.separator +
             "main" + File.separator +
             "resources" + File.separator +
-            "files" + File.separator +
+            "files";
+    private final String FILE_PATH = FOLDER_PATH + File.separator +
             "users.json";
+    private final String WRITE_PATH_QUERY4 = FOLDER_PATH + File.separator +
+            "users-and-products.json";
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
@@ -126,4 +133,43 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
+    @Override
+    @Transactional
+    public void getUsersAndSoldProducts() throws IOException {
+        List<User> users = this.userRepository.findAllSoldAtLeastOneProduct();
+
+        List<UsersSoldProductsDto> usersToSave = new ArrayList<>();
+
+        UserProductsDto dto = new UserProductsDto();
+        for (User user : users) {
+            UsersSoldProductsDto newUser = this.modelMapper.map(user, UsersSoldProductsDto.class);
+
+
+            List<ProductDto> userSellProducts = user.getSells().stream()
+                    .map(s -> modelMapper.map(s, ProductDto.class))
+                    .collect(Collectors.toList());
+
+            newUser.getSoldProducts().increaseCountBy(userSellProducts.size());
+            userSellProducts.forEach(
+                    p -> {
+                        newUser.getSoldProducts().addProducts(p);
+                    }
+            );
+            dto.getUsers().add(newUser);
+            dto.increaseUserCountByOne();
+
+            dto.addUser(newUser);
+        }
+
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .setPrettyPrinting()
+                .create();
+
+        FileWriter fw = new FileWriter(WRITE_PATH_QUERY4);
+
+        String jsonDto = gson.toJson(dto);
+        fw.write(jsonDto);
+        fw.close();
+    }
 }

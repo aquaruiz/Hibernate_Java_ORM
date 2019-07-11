@@ -7,18 +7,20 @@ import java.util.List;
 public class SuccessfullSellerDto {
     @Expose
     private String firstName;
+
     @Expose
     private String lastName;
+
     @Expose
-    private List<SoldProductDto> soldProducts;
+    private List<SoldProductDto> sells;
 
     public SuccessfullSellerDto() {
     }
 
-    public SuccessfullSellerDto(String firstName, String lastName, List<SoldProductDto> soldProducts) {
+    public SuccessfullSellerDto(String firstName, String lastName, List<SoldProductDto> sells) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.soldProducts = soldProducts;
+        this.sells = sells;
     }
 
     public String getFirstName() {
@@ -37,11 +39,27 @@ public class SuccessfullSellerDto {
         this.lastName = lastName;
     }
 
-    public List<SoldProductDto> getSoldProducts() {
-        return soldProducts;
+    public List<SoldProductDto> getSells() {
+        return sells;
     }
 
-    public void setSoldProducts(List<SoldProductDto> soldProducts) {
-        this.soldProducts = soldProducts;
+    public void setSells(List<SoldProductDto> sells) {
+        this.sells = sells;
+    }
+
+    public void addSoldProduct(SoldProductDto soldProduct) {
+        if (this.sells.contains(soldProduct)){
+            return;
+        }
+
+        this.sells.add(soldProduct);
+    }
+
+    public void removeSoldProduct(SoldProductDto soldProduct) {
+        if (!this.sells.contains(soldProduct)){
+            return;
+        }
+
+        this.sells.remove(soldProduct);
     }
 }

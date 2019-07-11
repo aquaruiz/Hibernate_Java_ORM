@@ -3,12 +3,10 @@ package json.exercise.controller;
 import json.exercise.service.CategoryService;
 import json.exercise.service.ProductService;
 import json.exercise.service.UserService;
-import org.hibernate.loader.custom.ScalarResultColumnProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -37,7 +35,13 @@ public class ProductShopController implements CommandLineRunner {
 //        this.getProductsInRange();
 
         // query 2
-        this.getUsersWithSuccessfullySoldProducts();
+//        this.getUsersWithSuccessfullySoldProducts();
+        
+        // query 3
+//        this.getCategoriesByProductsCount();
+
+        // query 4
+//        this.getUsersAndProducts();
     }
 
     private void populateDb() throws IOException {
@@ -68,5 +72,13 @@ public class ProductShopController implements CommandLineRunner {
 
     private void getUsersWithSuccessfullySoldProducts() throws IOException {
         this.productService.collectUsersWithSuccessfullySoldProducts();
+    }
+
+    private void getCategoriesByProductsCount() throws IOException {
+        this.categoryService.getStatisticsByProductsCount();
+    }
+
+    private void getUsersAndProducts() throws IOException {
+        this.userService.getUsersAndSoldProducts();
     }
 }

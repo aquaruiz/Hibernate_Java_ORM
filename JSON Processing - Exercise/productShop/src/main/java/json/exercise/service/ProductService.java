@@ -11,4 +11,5 @@ public interface ProductService {
     void collectProductsInRange(int lowerboundary, int upperboundary) throws IOException;
 
     void collectUsersWithSuccessfullySoldProducts() throws IOException;
+
 }

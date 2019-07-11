@@ -3,6 +3,7 @@ package json.exercise.service.impl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import json.exercise.domain.dtos.CategoryDto;
+import json.exercise.domain.dtos.queryDtos.CategoryStatisticsDto;
 import json.exercise.domain.entities.Category;
 import json.exercise.repository.CategoryRepository;
 import json.exercise.service.CategoryService;
@@ -14,21 +15,21 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Arrays;
-import java.util.Set;
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-    private final String FILE_PATH = "src" + File.separator +
+    private final String FOLDER_PATH = "src" + File.separator +
             "main" + File.separator +
             "resources" + File.separator +
-            "files" + File.separator +
+            "files";
+    private final String  FILE_PATH = FOLDER_PATH + File.separator +
             "categories.json";
+    private final String  FILE_WRITE_PATH3 = FOLDER_PATH + File.separator +
+            "categories-by-products.json";
     private final CategoryRepository categoryRepository;
     private final ModelMapper modelMapper;
 
@@ -93,5 +94,38 @@ public class CategoryServiceImpl implements CategoryService {
         }
 
         return true;
+    }
+
+    @Override
+    public void getStatisticsByProductsCount() throws IOException {
+        List<List<String>> total = this.categoryRepository.getStatistics();
+
+        List<CategoryStatisticsDto> categoryStatisticsDtos = new ArrayList<>();
+        total.forEach(
+                t -> {
+                    CategoryStatisticsDto catDto = new CategoryStatisticsDto();
+                    catDto.setCategoryName(t.get(0));
+                    catDto.setProductsCount(Integer.parseInt(t.get(1)));
+                    catDto.setAveragePrice(new BigDecimal(t.get(2)));
+                    catDto.setTotalRevenue(new BigDecimal(t.get(3)));
+                    categoryStatisticsDtos.add(catDto);
+                }
+        );
+
+        saveToJson(FILE_WRITE_PATH3, categoryStatisticsDtos);
+    }
+
+
+    private void saveToJson(String filePath, List<? extends Object> dtos) throws IOException {
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .setPrettyPrinting()
+                .create();
+
+        FileWriter fw = new FileWriter(filePath);
+
+        String jsonDto = gson.toJson(dtos);
+        fw.write(jsonDto);
+        fw.close();
     }
 }
