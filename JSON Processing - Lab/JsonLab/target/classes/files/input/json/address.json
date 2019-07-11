@@ -1,5 +1,11 @@
 {
   "country": "Bulgaria",
   "city": "Varna",
-  "street": "6 Vladislav Varnenchik str."
+  "streets": [
+      {
+        "id": 0,
+        "name": "Vladislav Varnenchik str.",
+        "number": 6
+      },
+   ]
 }

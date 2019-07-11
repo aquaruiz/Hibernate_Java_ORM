@@ -1,11 +1,10 @@
 package app.terminal;
 
 import app.domain.dto.AddressJsonDto;
-import app.domain.model.Address;
+import app.domain.dto.StreetJsonDto;
 import app.service.PersonService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -30,21 +29,28 @@ public class Terminal implements CommandLineRunner {
         AddressJsonDto addressJsonDto = new AddressJsonDto();
         addressJsonDto.setCountry("Bulgaria");
         addressJsonDto.setCity("Varna");
-        addressJsonDto.setStreet("6 Vladislav Varnenchik str.");
+        StreetJsonDto streetJsonDto = new StreetJsonDto();
+        streetJsonDto.setName("Vladislav Varnenchik str.");
+        streetJsonDto.setNumber(6);
+        addressJsonDto.addStreet(streetJsonDto);
 
         String content = gson.toJson(addressJsonDto);
-//        System.out.println(content);
+        System.out.println(content);
 
         AddressJsonDto addressJsonDtoForeign = new AddressJsonDto();
         addressJsonDtoForeign.setCountry("Spain");
         addressJsonDtoForeign.setCity("Barcelona");
-        addressJsonDtoForeign.setStreet("10 Gaudi str.");
+        StreetJsonDto streetJsonDtoForeign = new StreetJsonDto();
+        streetJsonDtoForeign.setName("Gaudi str.");
+        streetJsonDtoForeign.setNumber(10);
+        addressJsonDtoForeign.addStreet(streetJsonDto);
+        addressJsonDtoForeign.addStreet(streetJsonDtoForeign);
 
         List<AddressJsonDto> addressJsonDtos = new ArrayList<>();
         addressJsonDtos.add(addressJsonDto);
         addressJsonDtos.add(addressJsonDtoForeign);
         String multipleContent = gson.toJson(addressJsonDtos);
-//        System.out.println(multipleContent);
+        System.out.println(multipleContent);
 
         AddressJsonDto g123
                 = gson.fromJson(

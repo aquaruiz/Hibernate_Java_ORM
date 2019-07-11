@@ -18,8 +18,8 @@ public class Address {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "street")
-    private String street;
+    @OneToOne
+    private Street street;
 
     public Address() {
     }
@@ -48,11 +48,11 @@ public class Address {
         this.city = city;
     }
 
-    public String getStreet() {
-        return this.street;
+    public Street getStreet() {
+        return street;
     }
 
-    public void setStreet(String street) {
+    public void setStreet(Street street) {
         this.street = street;
     }
 }
