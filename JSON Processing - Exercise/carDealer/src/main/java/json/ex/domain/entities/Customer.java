@@ -1,12 +1,9 @@
 package json.ex.domain.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.time.LocalDate;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "customers")
@@ -19,10 +16,11 @@ public class Customer extends BaseEntity {
     private boolean isYoungDriver; // young if experience < 2 years
                                     // + 5 % price off
 
-    @OneToMany(targetEntity = Sale.class, mappedBy = "customer")
+    @OneToMany(targetEntity = Sale.class, mappedBy = "customer", fetch = FetchType.EAGER)
     private Set<Sale> sales;
 
     public Customer() {
+        this.sales = new HashSet<>();
     }
 
     public Customer(String name, LocalDateTime birthDate, boolean isYoungDriver, Set<Sale> sales) {

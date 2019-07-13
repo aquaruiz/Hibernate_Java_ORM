@@ -9,4 +9,6 @@ public interface CustomerService {
     void addCustomersData() throws FileNotFoundException;
 
     void getOrderedCustomers() throws IOException;
+
+    void getTotalSalesByCustomer() throws IOException;
 }

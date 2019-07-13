@@ -39,8 +39,10 @@ public class CarDealerController implements CommandLineRunner {
 //        this.carService.getCarsWithPartsList();
 
         // query 5
-        this
+//        this.customerService.getTotalSalesByCustomer();
+
         // query 6
+//        this.saleService.getSalesWithAppliedDiscount();
     }
 
     private void populateDb() throws FileNotFoundException {
