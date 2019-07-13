@@ -14,7 +14,7 @@ public class Car extends BaseEntity{
     @Column(name = "travelled_distance")
     private Long travelledDistance; // in km
 
-    @ManyToMany(targetEntity = Part.class)
+    @ManyToMany(targetEntity = Part.class, fetch = FetchType.EAGER)
     @JoinTable(name = "parts_cars",
     joinColumns = @JoinColumn(name = "car_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "part_id", referencedColumnName = "id"))

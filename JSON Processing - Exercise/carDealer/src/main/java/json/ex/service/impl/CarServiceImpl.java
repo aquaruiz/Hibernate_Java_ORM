@@ -3,6 +3,8 @@ package json.ex.service.impl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import json.ex.domain.dtos.CarDto;
+import json.ex.domain.dtos.query2.CarByMakeDto;
+import json.ex.domain.dtos.query4.CarPartDto;
 import json.ex.domain.entities.Car;
 import json.ex.domain.entities.Part;
 import json.ex.repository.CarRepository;
@@ -11,9 +13,8 @@ import json.ex.service.CarService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import javax.transaction.Transactional;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -24,10 +25,16 @@ public class CarServiceImpl implements CarService {
     private final String FOLDER_PATH = "src" + File.separator +
             "main" + File.separator +
             "resources" + File.separator +
-            "files" + File.separator;
+            "files";
     private final String FILE_PATH = FOLDER_PATH + File.separator +
             "input" + File.separator +
             "cars.json";
+    private final String FILE_WRITE2 = FOLDER_PATH + File.separator +
+            "output" + File.separator +
+            "toyota-cars.json";
+    private final String FILE_WRITE4 = FOLDER_PATH + File.separator +
+            "output" + File.separator +
+            "cars-and-parts.json";
 
     private final CarRepository carRepository;
     private final PartRepository partRepository;
@@ -70,5 +77,34 @@ public class CarServiceImpl implements CarService {
         Random random = new Random();
 
         return random.nextInt((end - start) + 1) + start;
+    }
+
+    @Override
+    @Transactional
+    public void getCarsFromMake(String carMake) throws IOException {
+        List<Car> carsByMake = this.carRepository.getAllByMakeOrderByModelAscTravelledDistanceDesc(carMake);
+
+        List<CarByMakeDto> carsDtoList = carsByMake.stream()
+                .map(c -> this.modelMapper.map(c, CarByMakeDto.class))
+                .collect(Collectors.toList());
+
+        saveToJson(carsDtoList, FILE_WRITE2);
+    }
+
+    @Override
+    public void getCarsWithPartsList() throws IOException {
+        List<Car> allCars = this.carRepository.findAll();
+
+        List<CarPartDto> carsWithParts = allCars.stream()
+                .map(c -> this.modelMapper.map(c, CarPartDto.class))
+                .collect(Collectors.toList());
+
+        this.saveToJson(carsWithParts, FILE_WRITE4);
+    }
+
+    private void saveToJson(List<?> dtos, String filePath) throws IOException {
+        FileWriter fr = new FileWriter(filePath);
+        this.gson.toJson(dtos, fr);
+        fr.flush();
     }
 }

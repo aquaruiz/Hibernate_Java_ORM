@@ -59,4 +59,12 @@ public class Customer extends BaseEntity {
     public void setYoungDriver(boolean youngDriver) {
         isYoungDriver = youngDriver;
     }
+
+    public Set<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
+    }
 }

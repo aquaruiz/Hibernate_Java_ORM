@@ -45,4 +45,13 @@ public class Sale extends BaseEntity {
     public void setDiscountPercentage(Double discountPercentage) {
         this.discountPercentage = discountPercentage;
     }
+
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "car=" + car +
+                ", customer=" + customer +
+                ", discountPercentage=" + discountPercentage +
+                '}';
+    }
 }

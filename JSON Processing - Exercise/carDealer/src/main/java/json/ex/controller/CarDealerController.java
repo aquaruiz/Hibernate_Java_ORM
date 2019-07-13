@@ -24,7 +24,23 @@ public class CarDealerController implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.populateDb();
+//        this.populateDb();
+
+        // query 1
+//        this.customerService.getOrderedCustomers();
+
+        // query 2
+//        this.carService.getCarsFromMake("Toyota");
+
+        // query 3
+//        this.supplierService.getLocalSuppliers();
+
+        // query 4
+//        this.carService.getCarsWithPartsList();
+
+        // query 5
+        this
+        // query 6
     }
 
     private void populateDb() throws FileNotFoundException {

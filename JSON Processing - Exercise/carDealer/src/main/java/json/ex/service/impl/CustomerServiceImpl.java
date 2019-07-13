@@ -3,6 +3,7 @@ package json.ex.service.impl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import json.ex.domain.dtos.CustomerDto;
+import json.ex.domain.dtos.query1.OrderedCustomerDto;
 import json.ex.domain.entities.Customer;
 import json.ex.repository.CustomerRepository;
 import json.ex.service.CustomerService;
@@ -10,12 +11,10 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import javax.transaction.Transactional;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,10 +22,13 @@ public class CustomerServiceImpl implements CustomerService {
     private final String FOLDER_PATH = "src" + File.separator +
             "main" + File.separator +
             "resources" + File.separator +
-            "files" + File.separator;
+            "files";
     private final String FILE_PATH = FOLDER_PATH + File.separator +
             "input" + File.separator +
             "customers.json";
+    private final String FILE_WRITE1 = FOLDER_PATH + File.separator +
+            "output" + File.separator +
+            "ordered-customers.json";
 
     private final CustomerRepository customerRepository;
     private final Gson gson;
@@ -63,5 +65,23 @@ public class CustomerServiceImpl implements CustomerService {
 
         this.customerRepository.saveAll(customersList);
         this.customerRepository.flush();
+    }
+
+    @Override
+    @Transactional
+    public void getOrderedCustomers() throws IOException {
+        List<Customer> allCustomers = this.customerRepository.getAllOrderedByBirthDateAsc();
+
+        List<OrderedCustomerDto> orderedCustomerDtos = allCustomers.stream()
+                .map(c -> this.modelMapper.map(c, OrderedCustomerDto.class))
+                .collect(Collectors.toList());
+
+        saveToJson(orderedCustomerDtos, FILE_WRITE1);
+    }
+
+    private void saveToJson(List<?> dtos, String filePath) throws IOException {
+        FileWriter fr = new FileWriter(filePath);
+        this.gson.toJson(dtos, fr);
+        fr.flush();
     }
 }

@@ -1,6 +1,7 @@
 package json.ex.domain.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "suppliers")
@@ -13,6 +14,13 @@ public class Supplier extends BaseEntity {
     private Set<Part> parts;
 
     public Supplier() {
+        this.parts = new HashSet<>();
+    }
+
+    public Supplier(String name, Boolean isImporter, Set<Part> parts) {
+        this.name = name;
+        this.isImporter = isImporter;
+        this.parts = parts;
     }
 
     public String getName() {
