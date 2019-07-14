@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8">
+<person>
+    <firstName>Teodor</firstName>
+    <address>
+        <country>Bulgaria</country>
+        <city>Stara Zagora</city>
+    </address>
+    <phoneNumbers>
+        <phoneNumber>
+            <number>08983248798</number>
+        </phoneNumber>
+        <phoneNumber>
+            <number>08983243143</number>
+        </phoneNumber>
+    </phoneNumbers>
+</person>

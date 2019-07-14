@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<user>
+    <name>bee</name>
+    <age>17</age>
+    <address country="BG">
+        <city>pld</city>
+    </address>
+</user>
