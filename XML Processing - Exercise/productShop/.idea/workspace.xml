@@ -2,9 +2,82 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d68c7376-c130-46f3-8d3f-5b8b21d7c72e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../JSON Processing - Exercise/productShop/src/main/java/json/exercise/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JSON Processing - Exercise/productShop/src/main/java/json/exercise/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JSON Processing - Exercise/productShop/src/main/java/json/exercise/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JSON Processing - Exercise/productShop/src/main/java/json/exercise/service/impl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JSON Processing - Exercise/productShop/src/main/java/json/exercise/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JSON Processing - Exercise/productShop/src/main/java/json/exercise/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/CarDealerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/controller/CarDealerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/CarDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/CustomerDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/PartDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/SupplierDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/query1/OrderedCustomerDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/query1/SaleDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/query2/CarByMakeDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/query3/LocalSupplierDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/query4/CarPartDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/query4/SimplePartDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/query5/TotalCustomerSalesDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/dtos/query6/SaleInfoDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/entities/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/entities/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/entities/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/entities/Part.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/entities/Sale.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/domain/entities/Supplier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/repository/CarRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/repository/CustomerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/repository/PartRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/repository/SaleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/repository/SupplierRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/CarService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/PartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/SaleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/SupplierService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/impl/CarServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/impl/CustomerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/impl/PartServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/impl/SaleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../carDealer/src/main/java/json/ex/service/impl/SupplierServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/ExerciseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/ExerciseApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/config/ExportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/config/ExportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/config/ImportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/config/ImportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/config/InputConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/config/InputConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/config/OutputConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/config/OutputConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/config/RandomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/config/RandomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/controller/ProductShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/controller/ProductShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/CategoriesDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/CategoriesDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/CategoryDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/ProductsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/ProductsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/UsersDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/UsersDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query1/ProductInRangeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query1/ProductInRangeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query1/ProductsInRangeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query1/ProductsInRangeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/RootProductsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query2/RootProductsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/RootSellersDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query2/RootSellersDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/SoldProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query2/SoldProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/SuccessfullSellerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query2/SuccessfullSellerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query3/CategoryStatisticsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query3/CategoryStatisticsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query3/RootCategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query3/RootCategoryDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query4/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/RootUserProductsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query4/RootUserProductsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/SoldProductsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query4/SoldProductsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/UsersSoldProductsDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/dtos/queryDtos/query4/UsersSoldProductsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/entities/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/entities/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/entities/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/entities/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/entities/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/entities/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/domain/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/json/exercise/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xml/exercise/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/files/output/products-in-range.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/files/output/products-in-range.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/json/exercise/ExerciseApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/xml/exercise/ExerciseApplicationTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,26 +126,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/service/impl/CategoryServiceImpl.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xml/exercise/controller/ProductShopController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="67" column="1" lean-forward="true" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/service/impl/ProductServiceImpl.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xml/exercise/ExerciseApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="125" column="1" selection-start-line="125" selection-start-column="1" selection-end-line="125" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="200">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -98,10 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4c0fde89-cf05-46fa-9f31-a5a176624e40/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/json/exercise/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/UsersSoldProducts.java" />
-        <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/UserProductsDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/UsersSoldProductsDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/SoldProductsDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query3/SoldProductsDto.java" />
@@ -136,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/RootProductsDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query3/RootCategoryDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query3/CategoryStatisticsDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/json/exercise/controller/ProductShopController.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/service/impl/CategoryServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/RootUserProductDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/RootUsersSoldProductsDto.java" />
@@ -149,6 +211,11 @@
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/config/ExportService.java" />
         <option value="$PROJECT_DIR$/src/main/java/json/exercise/service/impl/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/exercise/service/impl/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/exercise/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/json/ExerciseApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/json/exercise/controller/ProductShopController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/xml/exercise/controller/ProductShopController.java" />
       </list>
     </option>
   </component>
@@ -204,7 +271,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
@@ -212,138 +279,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
               <item name="exercise" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="dtos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="dtos" type="462c0819:PsiDirectoryNode" />
-              <item name="queryDtos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="json" type="462c0819:PsiDirectoryNode" />
-              <item name="exercise" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exercise" type="b2602c69:ProjectViewProjectNode" />
-              <item name="productShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
@@ -356,6 +305,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="json" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/ToXmlExport" />
       <recent name="$PROJECT_DIR$/src/main/resources/files/input" />
@@ -375,6 +327,11 @@
     </key>
   </component>
   <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -387,13 +344,25 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="ExerciseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="ExerciseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="exercise" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="json.exercise.ExerciseApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="xml.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="xml.ExerciseApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.ExerciseApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -409,12 +378,13 @@
       <workItem from="1562776738417" duration="12401000" />
       <workItem from="1562822577708" duration="23537000" />
       <workItem from="1563115765420" duration="14490000" />
-      <workItem from="1563170176363" duration="5474000" />
+      <workItem from="1563170176363" duration="5930000" />
+      <workItem from="1563176232223" duration="231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62579000" />
+    <option name="totallyTimeSpent" value="63296000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,9 +402,10 @@
       <window_info id="UI Designer" order="0" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.70509976" visible="true" weight="0.18754987" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.70509976" visible="true" weight="0.28411812" />
+      <window_info anchor="bottom" id="Run Dashboard" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.32792208" />
       <window_info anchor="bottom" id="Spring" order="2" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" />
@@ -444,13 +415,12 @@
       <window_info anchor="bottom" id="CheckStyle" order="8" />
       <window_info anchor="bottom" id="Message" order="9" />
       <window_info anchor="bottom" id="Find" order="10" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="11" visible="true" weight="0.25407165" />
+      <window_info anchor="bottom" id="Run" order="11" weight="0.40553746" />
       <window_info anchor="bottom" id="Debug" order="12" weight="0.24104235" />
       <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="15" weight="0.32899022" />
       <window_info anchor="bottom" id="Structure" order="16" sideWeight="0.2949002" weight="0.42019543" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32960895" />
       <window_info anchor="right" id="Database" order="0" weight="0.32960895" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="right" id="Maven" order="2" />
@@ -458,6 +428,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="5" weight="0.24980047" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="7" side_tool="true" weight="0.32960895" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,25 +442,6 @@
     <SUITE FILE_PATH="coverage/exercise$ExerciseApplication.ic" NAME="ExerciseApplication Coverage Results" MODIFIED="1563172803445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/entities/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="65" selection-start-line="3" selection-start-column="65" selection-end-line="3" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/files/users.json" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -504,7 +456,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/CategoryDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/CategoryDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
@@ -515,7 +467,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/UserDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/UserDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
           <caret line="51" column="1" lean-forward="true" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
@@ -525,7 +477,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/config/RandomService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/config/RandomService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
@@ -539,14 +491,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/CategoriesDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/CategoriesDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/UsersDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/UsersDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
@@ -556,7 +508,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/ProductsDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/ProductsDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
@@ -570,7 +522,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/config/InputConstants.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/config/InputConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
@@ -613,21 +565,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/config/OutputConstants.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/config/OutputConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query1/ProductsInRangeDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query1/ProductsInRangeDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/config/ImportService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/config/ImportService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -636,7 +588,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query1/ProductInRangeDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query1/ProductInRangeDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
           <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
@@ -655,41 +607,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/service/ProductService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/service/ProductService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/ToXmlExport/SuccessfullSellerDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/ToXmlExport/SoldProductsDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/ToXmlExport/SoldProductDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/ToXmlExport/SuccessfullSellerDto.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/ToXmlExport/SoldProductsDto.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/ToXmlExport/SoldProductDto.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/files/input/products.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/entities/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/entities/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
@@ -723,7 +654,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/RootSellersDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query2/RootSellersDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
@@ -735,7 +666,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/SuccessfullSellerDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query2/SuccessfullSellerDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
@@ -745,7 +676,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/RootProductsDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query2/RootProductsDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
@@ -755,7 +686,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query2/SoldProductDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query2/SoldProductDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
@@ -765,7 +696,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/service/CategoryService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/service/CategoryService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
@@ -775,7 +706,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query3/RootCategoryDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query3/RootCategoryDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
@@ -789,7 +720,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query3/CategoryStatisticsDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query3/CategoryStatisticsDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
@@ -799,21 +730,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/RootUserProductDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/RootUsersSoldProductsDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/ProductDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/RootUserProductDto.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/RootUsersSoldProductsDto.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/ProductDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret lean-forward="true" />
@@ -823,7 +742,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/ProductDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query4/ProductDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
@@ -833,7 +752,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/repository/UserRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/repository/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9">
           <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
@@ -843,36 +762,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="83" column="1" lean-forward="true" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#834#835#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/service/UserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/controller/ProductShopController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="71" column="5" lean-forward="true" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/RootUserProductsDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query4/RootUserProductsDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="412">
           <caret line="52" column="1" lean-forward="true" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
@@ -882,7 +779,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/config/ExportService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/config/ExportService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
           <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
@@ -892,7 +789,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/SoldProductsDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query4/SoldProductsDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret lean-forward="true" />
@@ -902,14 +799,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/domain/dtos/queryDtos/query4/UsersSoldProductsDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/domain/dtos/queryDtos/query4/UsersSoldProductsDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
           <caret line="61" column="1" lean-forward="true" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/service/impl/CategoryServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/service/impl/CategoryServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
           <caret line="67" column="1" lean-forward="true" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
@@ -919,13 +816,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/json/exercise/service/impl/ProductServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/ProductShopController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="125" column="1" selection-start-line="125" selection-start-column="1" selection-end-line="125" selection-end-column="1" />
+        <state>
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/service/impl/ProductServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="108" column="47" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/ExerciseApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/json/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xml/exercise/ExerciseApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xml/exercise/controller/ProductShopController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
