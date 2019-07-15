@@ -1,44 +1,28 @@
 package ex.xml.service.impl;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import ex.xml.domain.dtos.PartDto;
+import ex.xml.config.ImportService;
+import ex.xml.config.InputConstants;
+import ex.xml.config.RandomService;
+import ex.xml.domain.dtos.PartRootDto;
 import ex.xml.domain.entities.Part;
 import ex.xml.domain.entities.Supplier;
 import ex.xml.repository.PartRepository;
 import ex.xml.repository.SupplierRepository;
 import ex.xml.service.PartService;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
+import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 @Service
 public class PartServiceImpl implements PartService {
-    private final String FOLDER_PATH = "src" + File.separator +
-            "main" + File.separator +
-            "resources" + File.separator +
-            "files" + File.separator;
-    private final String FILE_PATH = FOLDER_PATH + File.separator +
-            "input" + File.separator +
-            "parts.xml";
-
     private final PartRepository partRepository;
     private final SupplierRepository supplierRepository;
-    private final Gson gson;
-    private ModelMapper modelMapper;
 
-    public PartServiceImpl(PartRepository partRepository, Gson gson, SupplierRepository supplierRepository) {
+    public PartServiceImpl(PartRepository partRepository, SupplierRepository supplierRepository) {
         this.supplierRepository = supplierRepository;
-        this.gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
         this.partRepository = partRepository;
-        this.modelMapper = new ModelMapper();
     }
 
     @Override
@@ -47,24 +31,18 @@ public class PartServiceImpl implements PartService {
     }
 
     @Override
-    public void addPartsData() throws FileNotFoundException {
-        FileReader fr = new FileReader(FILE_PATH);
-        PartDto[] partDtosList = gson.fromJson(fr, PartDto[].class);
-        List<Part> partsList = Arrays.stream(partDtosList)
-                .map(dto -> this.modelMapper.map(dto, Part.class))
-                .collect(Collectors.toList());
+    public void addPartsData() throws FileNotFoundException, JAXBException {
+        PartRootDto partRootDto = ImportService.getFromXml(InputConstants.FILE_PARTS_PATH, PartRootDto.class);
+        List<Part> partsList = ImportService.mappDtoToEntity(partRootDto.getParts(), Part.class);
 
         List<Supplier> suppliers = this.supplierRepository.findAll();
 
-        partsList.forEach(p -> p.setSupplier(suppliers.get(randomInRange(suppliers.size()))));
+        partsList.forEach(p -> p.setSupplier(
+                suppliers.get(
+                    RandomService.getRandomInt(
+                            0, suppliers.size() - 1))));
 
         this.partRepository.saveAll(partsList);
         this.partRepository.flush();
-    }
-
-    private int randomInRange(long size) {
-        Random random = new Random();
-
-        return random.nextInt((int) size);
     }
 }

@@ -1,26 +1,22 @@
-package ex.xml.domain.dtos;
+package ex.xml.domain.dtos.query6;
+
+import ex.xml.domain.dtos.query4.CarPartRootDto;
 
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "car")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CarDto {
-    @XmlElement(name = "make")
+    @XmlAttribute(name = "make")
     private String make;
 
-    @XmlElement(name = "model")
+    @XmlAttribute(name = "model")
     private String model;
 
-    @XmlElement(name = "travelled-distance")
+    @XmlAttribute(name = "travelled-distance")
     private Long travelledDistance; // in km
 
     public CarDto() {
-    }
-
-    public CarDto(String make, String model, Long travelledDistance) {
-        this.make = make;
-        this.model = model;
-        this.travelledDistance = travelledDistance;
     }
 
     public String getMake() {

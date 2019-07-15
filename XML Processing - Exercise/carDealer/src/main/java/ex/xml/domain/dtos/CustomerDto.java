@@ -1,25 +1,28 @@
 package ex.xml.domain.dtos;
 
-import com.google.gson.annotations.Expose;
+import ex.xml.util.LocalDateTimeAdapter;
 
-import java.time.LocalDate;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+@XmlRootElement(name = "customer")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CustomerDto {
-    @Expose
+    @XmlAttribute(name = "name")
     private String name;
 
-    @Expose
-    private String birthDate;
+    @XmlElement(name = "birth-date")
+    @XmlJavaTypeAdapter(type = LocalDateTime.class, value = LocalDateTimeAdapter.class)
+    private LocalDateTime birthDate;
 
-    @Expose
+    @XmlElement(name = "is-young-driver")
     private boolean isYoungDriver;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(String name, String birthDate, boolean isYoungDriver) {
+    public CustomerDto(String name, LocalDateTime birthDate, boolean isYoungDriver) {
         this.name = name;
         this.birthDate = birthDate;
         this.isYoungDriver = isYoungDriver;
@@ -33,11 +36,11 @@ public class CustomerDto {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public LocalDateTime getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDateTime birthDate) {
         this.birthDate = birthDate;
 //        this.birthDate = LocalDateTime.parse(birthDate, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
     }

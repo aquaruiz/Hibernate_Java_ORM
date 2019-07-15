@@ -1,9 +1,11 @@
 package ex.xml.controller;
 
 import ex.xml.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
+import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
 @Controller
@@ -14,6 +16,7 @@ public class CarDealerController implements CommandLineRunner {
     private final CustomerService customerService;
     private final SaleService saleService;
 
+    @Autowired
     public CarDealerController(SupplierService supplierService, PartService partService, CarService carService, CustomerService customerService, SaleService saleService) {
         this.supplierService = supplierService;
         this.partService = partService;
@@ -24,7 +27,7 @@ public class CarDealerController implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        this.populateDb();
+        this.populateDb();
 
         // query 1
 //        this.customerService.getOrderedCustomers();
@@ -45,25 +48,25 @@ public class CarDealerController implements CommandLineRunner {
 //        this.saleService.getSalesWithAppliedDiscount();
     }
 
-    private void populateDb() throws FileNotFoundException {
+    private void populateDb() throws FileNotFoundException, JAXBException {
         if (this.supplierService.getDbRecordsCount() < 1){
             this.supplierService.addSuppliersData();
         }
 
-//        if (this.partService.getDbRecordsCount() < 1){
-//            this.partService.addPartsData();
-//        }
-//
-//        if (this.carService.getDbRecordsCount() < 1){
-//            this.carService.addCarsData();
-//        }
-//
-//        if (this.customerService.getDbRecordsCount() < 1){
-//            this.customerService.addCustomersData();
-//        }
-//
-//        if (this.saleService.getDbRecordsCount() < 1){
-//            this.saleService.addSalesData();
-//        }
+        if (this.partService.getDbRecordsCount() < 1){
+            this.partService.addPartsData();
+        }
+
+        if (this.carService.getDbRecordsCount() < 1){
+            this.carService.addCarsData();
+        }
+
+        if (this.customerService.getDbRecordsCount() < 1){
+            this.customerService.addCustomersData();
+        }
+
+        if (this.saleService.getDbRecordsCount() < 1){
+            this.saleService.addSalesData();
+        }
     }
 }

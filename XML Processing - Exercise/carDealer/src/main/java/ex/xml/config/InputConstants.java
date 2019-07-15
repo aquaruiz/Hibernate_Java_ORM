@@ -7,13 +7,17 @@ public class InputConstants {
             "main" + File.separator +
             "resources" + File.separator +
             "files";
-    public static final String FILE_CATEGORIES = FOLDER_PATH + File.separator +
+
+    public static final String FILE_SUPPLIERS_PATH = FOLDER_PATH + File.separator +
             "input" + File.separator +
-            "categories.xml";
-    public static final String FILE_USERS = FOLDER_PATH + File.separator +
+            "suppliers.xml";
+    public static final String FILE_PARTS_PATH = FOLDER_PATH + File.separator +
             "input" + File.separator +
-            "users.xml";
-    public static final String FILE_PRODUCTS = FOLDER_PATH + File.separator +
+            "parts.xml";
+    public static final String FILE_CARS_PATH = FOLDER_PATH + File.separator +
             "input" + File.separator +
-            "products.xml";
+            "cars.xml";
+    public static final String FILE_CUSTOMERS_PATH = FOLDER_PATH + File.separator +
+            "input" + File.separator +
+            "customers.xml";
 }

@@ -2,7 +2,6 @@ package ex.xml.domain.entities;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,9 +45,9 @@ public class Customer extends BaseEntity {
         this.birthDate = birthDate;
     }
 
-    public void setBirthDate(String dateOfBirth) {
-        this.birthDate = LocalDateTime.parse(dateOfBirth, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
-    }
+//    public void setBirthDate(String dateOfBirth) {
+//        this.birthDate = LocalDateTime.parse(dateOfBirth, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+//    }
 
     public boolean isYoungDriver() {
         return isYoungDriver;

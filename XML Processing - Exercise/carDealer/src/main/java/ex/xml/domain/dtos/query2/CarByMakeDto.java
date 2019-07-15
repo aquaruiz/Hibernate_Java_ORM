@@ -1,23 +1,20 @@
 package ex.xml.domain.dtos.query2;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name = "car")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CarByMakeDto {
-    @Expose
-    @SerializedName(value = "Id")
+    @XmlAttribute(name = "id")
     private Integer id;
 
-    @Expose
-    @SerializedName(value = "Make")
+    @XmlAttribute(name = "make")
     private String make;
 
-    @Expose
-    @SerializedName(value = "Model")
+    @XmlAttribute(name = "model")
     private String model;
 
-    @Expose
-    @SerializedName(value = "TravelledDistance")
+    @XmlAttribute(name = "travelled-distance")
     private Long travelledDistance; // in km
 
     public CarByMakeDto() {

@@ -1,5 +1,6 @@
 package ex.xml.service;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
 public interface SaleService {
@@ -7,5 +8,5 @@ public interface SaleService {
 
     void addSalesData();
 
-    void getSalesWithAppliedDiscount() throws IOException;
+    void getSalesWithAppliedDiscount() throws IOException, JAXBException;
 }

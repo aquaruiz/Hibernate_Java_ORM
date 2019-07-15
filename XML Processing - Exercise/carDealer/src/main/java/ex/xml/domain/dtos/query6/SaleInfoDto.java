@@ -1,29 +1,29 @@
 package ex.xml.domain.dtos.query6;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import ex.xml.domain.dtos.CarDto;
 import ex.xml.domain.entities.Customer;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 
+@XmlRootElement(name = "sale")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SaleInfoDto {
-    @Expose
+    @XmlElement(name = "car")
     private CarDto car;
 
+    @XmlTransient
     private Customer customer;
 
-    @Expose
+    @XmlElement(name = "customer-name")
     private String customerName;
 
-    @Expose
+    @XmlElement(name = "discount")
     private double discount;
 
-    @Expose
-    @SerializedName(value = "price")
+    @XmlElement(name = "price")
     private BigDecimal carPrice;
 
-    @Expose
+    @XmlElement(name = "price-with-discount")
     private BigDecimal priceWithDiscount;
 
     public SaleInfoDto(CarDto car, Customer customer, String customerName, double discount, BigDecimal carPrice, BigDecimal priceWithDiscount) {

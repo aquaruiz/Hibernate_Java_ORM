@@ -1,13 +1,15 @@
 package ex.xml.domain.dtos.query4;
 
-import com.google.gson.annotations.Expose;
-
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 
+@XmlRootElement(name = "part")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SimplePartDto {
-    @Expose
+    @XmlAttribute(name = "name")
     private String name;
-    @Expose
+
+    @XmlAttribute(name = "price")
     private BigDecimal price;
 
     public SimplePartDto() {

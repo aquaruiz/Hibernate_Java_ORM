@@ -1,49 +1,35 @@
 package ex.xml.service.impl;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import ex.xml.config.ExportService;
+import ex.xml.config.ImportService;
+import ex.xml.config.InputConstants;
+import ex.xml.config.OutputConstants;
 import ex.xml.domain.dtos.CustomerDto;
+import ex.xml.domain.dtos.CustomerRootDto;
+import ex.xml.domain.dtos.PartRootDto;
 import ex.xml.domain.dtos.query1.OrderedCustomerDto;
+import ex.xml.domain.dtos.query1.OrderedCustomerRootDto;
 import ex.xml.domain.dtos.query5.TotalCustomerSalesDto;
+import ex.xml.domain.dtos.query5.TotalCustomersRootDto;
 import ex.xml.domain.entities.Customer;
 import ex.xml.repository.CustomerRepository;
 import ex.xml.service.CustomerService;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.xml.bind.JAXBException;
 import java.io.*;
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-    private final String FOLDER_PATH = "src" + File.separator +
-            "main" + File.separator +
-            "resources" + File.separator +
-            "files";
-    private final String FILE_PATH = FOLDER_PATH + File.separator +
-            "input" + File.separator +
-            "customers.xml";
-    private final String FILE_WRITE1 = FOLDER_PATH + File.separator +
-            "output" + File.separator +
-            "ordered-customers.xml";
-    private final String FILE_WRITE4 = FOLDER_PATH + File.separator +
-            "output" + File.separator +
-            "customers-total-sales.xml";
-
     private final CustomerRepository customerRepository;
-    private final Gson gson;
-    private ModelMapper modelMapper;
 
     public CustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
-        this.gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
-        this.modelMapper = new ModelMapper();
     }
 
     @Override
@@ -52,22 +38,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void addCustomersData() throws FileNotFoundException {
-        FileReader fr = new FileReader(FILE_PATH);
-        CustomerDto[] customerDtosList = gson.fromJson(fr, CustomerDto[].class);
+    public void addCustomersData() throws FileNotFoundException, JAXBException {
+        CustomerRootDto customerRootDto = ImportService
+                .getFromXml(InputConstants.FILE_CUSTOMERS_PATH, CustomerRootDto.class);
 
-        PropertyMap<CustomerDto, Customer> customerMap = new PropertyMap<CustomerDto, Customer>() {
-            @Override
-            protected void configure() {
-                map().setBirthDate(source.getBirthDate());
-            }
-        };
-
-        modelMapper.addMappings(customerMap);
-
-        List<Customer> customersList = Arrays.stream(customerDtosList)
-                .map(dto -> this.modelMapper.map(dto, Customer.class))
-                .collect(Collectors.toList());
+        CustomerDto[] customerDtos = customerRootDto.getCustomers();
+        List<Customer> customersList = ImportService.mappDtoToEntity(customerDtos, Customer.class);
 
         this.customerRepository.saveAll(customersList);
         this.customerRepository.flush();
@@ -75,35 +51,31 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public void getOrderedCustomers() throws IOException {
+    public void getOrderedCustomers() throws IOException, JAXBException {
         List<Customer> allCustomers = this.customerRepository.getAllOrderedByBirthDateAsc();
 
-        List<OrderedCustomerDto> orderedCustomerDtos = allCustomers.stream()
-                .map(c -> this.modelMapper.map(c, OrderedCustomerDto.class))
-                .collect(Collectors.toList());
+        List<OrderedCustomerDto> orderedCustomerDtos = ExportService.mappEntitiesToDtos(allCustomers, OrderedCustomerDto.class);
+        OrderedCustomerRootDto dtoToXml = new OrderedCustomerRootDto();
+        dtoToXml.setCustomers(orderedCustomerDtos);
 
-        saveToJson(orderedCustomerDtos, FILE_WRITE1);
+        ExportService.saveToXml(OutputConstants.FILE_QUERY1, dtoToXml);
     }
 
     @Override
-    public void getTotalSalesByCustomer() throws IOException {
+    public void getTotalSalesByCustomer() throws IOException, JAXBException {
         List<List<String>> sellingCustomers = this.customerRepository.getAllBySalesAndOrder();
 
-        List<TotalCustomerSalesDto> dtos = new LinkedList<>();
+        List<TotalCustomerSalesDto> customerSalesDtos = new LinkedList<>();
         for (List<String> customer : sellingCustomers) {
             TotalCustomerSalesDto newDto = new TotalCustomerSalesDto();
             newDto.setFullName(customer.get(0));
             newDto.setBoughtCars(Integer.parseInt(customer.get(1)));
             newDto.setSpentMoney(new BigDecimal(customer.get(2)));
-            dtos.add(newDto);
+            customerSalesDtos.add(newDto);
         }
 
-        this.saveToJson(dtos, FILE_WRITE4);
-    }
-
-    private void saveToJson(List<?> dtos, String filePath) throws IOException {
-        FileWriter fr = new FileWriter(filePath);
-        this.gson.toJson(dtos, fr);
-        fr.flush();
+        TotalCustomersRootDto dtoToXml = new TotalCustomersRootDto();
+        dtoToXml.setCustomers(customerSalesDtos);
+        ExportService.saveToXml(OutputConstants.FILE_QUERY5, dtoToXml);
     }
 }

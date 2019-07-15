@@ -1,13 +1,13 @@
 package ex.xml.domain.entities;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.*;
 
 @Entity(name = "cars")
 @Table(name = "cars")
-public class Car extends BaseEntity{
+public class Car extends BaseEntity {
     private String make;
     private String model;
 

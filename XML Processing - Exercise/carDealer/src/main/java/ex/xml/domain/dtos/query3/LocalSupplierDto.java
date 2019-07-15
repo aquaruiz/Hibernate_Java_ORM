@@ -1,18 +1,17 @@
 package ex.xml.domain.dtos.query3;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name = "supplier")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class LocalSupplierDto {
-    @Expose
-    @SerializedName(value = "Id")
+    @XmlAttribute(name = "id")
     private Integer id;
 
-    @Expose
-    @SerializedName(value = "Name")
+    @XmlAttribute(name = "name")
     private String name;
 
-    @Expose
+    @XmlAttribute(name = "parts-count")
     private long partsCount;
 
     public LocalSupplierDto() {

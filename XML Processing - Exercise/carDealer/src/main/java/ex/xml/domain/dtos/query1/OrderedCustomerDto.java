@@ -1,42 +1,33 @@
 package ex.xml.domain.dtos.query1;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import java.util.HashSet;
-import java.util.Set;
-
+@XmlRootElement(name = "customer")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class OrderedCustomerDto {
-    @Expose
-    @SerializedName(value = "Id")
+    @XmlElement(name = "id")
     private Integer id;
 
-    @Expose
-    @SerializedName(value = "Name")
+    @XmlElement(name = "name")
     private String name;
 
-    @Expose
-    @SerializedName(value = "BirthDate")
+    @XmlElement(name = "birth-date")
     private String birthDate;
 
-    @Expose
-    @SerializedName(value = "IsYoungDriver")
+    @XmlElement(name = "is-young-driver")
     private boolean isYoungDriver;
 
-    @Expose
-    @SerializedName(value = "Sales")
-    private Set<SaleDto> sales;
-
     public OrderedCustomerDto() {
-        this.sales = new HashSet<>();
     }
 
-    public OrderedCustomerDto(Integer id, String name, String birthDate, boolean isYoungDriver, Set<SaleDto> sales) {
+    public OrderedCustomerDto(Integer id, String name, String birthDate, boolean isYoungDriver) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
         this.isYoungDriver = isYoungDriver;
-        this.sales = sales;
     }
 
     public Integer getId() {
@@ -69,13 +60,5 @@ public class OrderedCustomerDto {
 
     public void setYoungDriver(boolean youngDriver) {
         isYoungDriver = youngDriver;
-    }
-
-    public Set<SaleDto> getSales() {
-        return sales;
-    }
-
-    public void setSales(Set<SaleDto> sales) {
-        this.sales = sales;
     }
 }
