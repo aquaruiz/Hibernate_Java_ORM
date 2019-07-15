@@ -3,7 +3,6 @@ package json.exercise.service.impl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import json.exercise.domain.dtos.ProductDto;
-import json.exercise.domain.dtos.UserDto;
 import json.exercise.domain.dtos.queryDtos.ProductInRangeDto;
 import json.exercise.domain.dtos.queryDtos.SoldProductDto;
 import json.exercise.domain.dtos.queryDtos.SuccessfullSellerDto;
@@ -65,9 +64,6 @@ public class ProductServiceImpl implements ProductService {
         ProductDto[] productDtos = getFromJson(FILE_PATH);
 
         Product[] products = mappDtoToEntity(productDtos);
-
-        System.out.println(productDtos.length);
-        System.out.println(products.length);
 
         if (validateEntities(products) == true){
             List<Category> allCategories = this.categoryRepository.findAll();

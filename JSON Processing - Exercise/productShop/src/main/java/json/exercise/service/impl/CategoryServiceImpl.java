@@ -49,16 +49,12 @@ public class CategoryServiceImpl implements CategoryService {
 
         Category[] categories = mappDtoToEntity(categoryDtos);
 
-        System.out.println(categoryDtos.length);
-        System.out.println(categories.length);
-
         if (validateEntities(categories) == true){
             this.categoryRepository
                     .saveAll(
                             Arrays.stream(categories)
                             .collect(Collectors.toList())
                     );
-            System.out.println("Categories OK");
         }
     }
 

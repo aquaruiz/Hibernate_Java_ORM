@@ -51,9 +51,6 @@ public class UserServiceImpl implements UserService {
 
         User[] users = mappDtoToEntity(userDtos);
 
-        System.out.println(userDtos.length);
-        System.out.println(users.length);
-
         if (validateEntities(users) == true){
             Arrays.stream(users)
                     .forEach(p -> p.setFriends(getRandomFriend(users)));
@@ -65,7 +62,6 @@ public class UserServiceImpl implements UserService {
                     );
 
             this.userRepository.flush();
-            System.out.println("Users OK");
         }
     }
 
