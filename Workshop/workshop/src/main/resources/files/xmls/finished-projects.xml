@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<projects>
+    <project>
+        <name>HealthCare</name>
+        <description>Pharmacy web app</description>
+        <start-date>2017-07-12</start-date>
+        <is-finished>true</is-finished>
+        <payment>10000.00</payment>
+        <company name="Phoenix"/>
+    </project>
+    <project>
+        <name>MMA</name>
+        <description>Mixed martial arts club web site</description>
+        <start-date>2018-09-21</start-date>
+        <is-finished>true</is-finished>
+        <payment>7000.00</payment>
+        <company name="Vallor"/>
+    </project>
+    <project>
+        <name>Intel</name>
+        <description>Intel new processor</description>
+        <start-date>2016-01-13</start-date>
+        <is-finished>true</is-finished>
+        <payment>1500000.00</payment>
+        <company name="Tech"/>
+    </project>
+    <project>
+        <name>Furniture</name>
+        <description>Furniture magazine</description>
+        <start-date>2015-10-21</start-date>
+        <is-finished>true</is-finished>
+        <payment>30000.00</payment>
+        <company name="DesignGroup"/>
+    </project>
+    <project>
+        <name>GitBuh_Project</name>
+        <description>GitBuh repositories improvement</description>
+        <start-date>2017-02-05</start-date>
+        <is-finished>true</is-finished>
+        <payment>47899.00</payment>
+        <company name="Gitbuh"/>
+    </project>
+    <project>
+        <name>HoodWars</name>
+        <description>Online fighting game</description>
+        <start-date>2018-06-11</start-date>
+        <is-finished>true</is-finished>
+        <payment>650000.00</payment>
+        <company name="Vallor"/>
+    </project>
+    <project>
+        <name>AMD</name>
+        <description>Graphic card</description>
+        <start-date>2015-09-16</start-date>
+        <is-finished>true</is-finished>
+        <payment>5689900.00</payment>
+        <company name="Tech"/>
+    </project>
+    <project>
+        <name>HealthCare</name>
+        <description>Pharmacy web app</description>
+        <start-date>2017-07-12</start-date>
+        <is-finished>true</is-finished>
+        <payment>10000.00</payment>
+        <company name="Phoenix"/>
+    </project>
+    <project>
+        <name>MMA</name>
+        <description>Mixed martial arts club web site</description>
+        <start-date>2018-09-21</start-date>
+        <is-finished>true</is-finished>
+        <payment>7000.00</payment>
+        <company name="Vallor"/>
+    </project>
+    <project>
+        <name>Intel</name>
+        <description>Intel new processor</description>
+        <start-date>2016-01-13</start-date>
+        <is-finished>true</is-finished>
+        <payment>1500000.00</payment>
+        <company name="Tech"/>
+    </project>
+    <project>
+        <name>Furniture</name>
+        <description>Furniture magazine</description>
+        <start-date>2015-10-21</start-date>
+        <is-finished>true</is-finished>
+        <payment>30000.00</payment>
+        <company name="DesignGroup"/>
+    </project>
+    <project>
+        <name>HoodWars</name>
+        <description>Online fighting game</description>
+        <start-date>2018-06-11</start-date>
+        <is-finished>true</is-finished>
+        <payment>650000.00</payment>
+        <company name="Vallor"/>
+    </project>
+    <project>
+        <name>GitBuh_Project</name>
+        <description>GitBuh repositories improvement</description>
+        <start-date>2017-02-05</start-date>
+        <is-finished>true</is-finished>
+        <payment>47899.00</payment>
+        <company name="Gitbuh"/>
+    </project>
+    <project>
+        <name>GitBuh_Project</name>
+        <description>GitBuh repositories improvement</description>
+        <start-date>2017-02-05</start-date>
+        <is-finished>true</is-finished>
+        <payment>47899.00</payment>
+        <company name="Gitbuh"/>
+    </project>
+    <project>
+        <name>HealthCare</name>
+        <description>Pharmacy web app</description>
+        <start-date>2017-07-12</start-date>
+        <is-finished>true</is-finished>
+        <payment>10000.00</payment>
+        <company name="Phoenix"/>
+    </project>
+    <project>
+        <name>GitBuh_Project</name>
+        <description>GitBuh repositories improvement</description>
+        <start-date>2017-02-05</start-date>
+        <is-finished>true</is-finished>
+        <payment>47899.00</payment>
+        <company name="Gitbuh"/>
+    </project>
+    <project>
+        <name>Furniture</name>
+        <description>Furniture magazine</description>
+        <start-date>2015-10-21</start-date>
+        <is-finished>true</is-finished>
+        <payment>30000.00</payment>
+        <company name="DesignGroup"/>
+    </project>
+    <project>
+        <name>Intel</name>
+        <description>Intel new processor</description>
+        <start-date>2016-01-13</start-date>
+        <is-finished>true</is-finished>
+        <payment>1500000.00</payment>
+        <company name="Tech"/>
+    </project>
+    <project>
+        <name>MMA</name>
+        <description>Mixed martial arts club web site</description>
+        <start-date>2018-09-21</start-date>
+        <is-finished>true</is-finished>
+        <payment>7000.00</payment>
+        <company name="Vallor"/>
+    </project>
+    <project>
+        <name>MMA</name>
+        <description>Mixed martial arts club web site</description>
+        <start-date>2018-09-21</start-date>
+        <is-finished>true</is-finished>
+        <payment>7000.00</payment>
+        <company name="Vallor"/>
+    </project>
+    <project>
+        <name>GitBuh_Project</name>
+        <description>GitBuh repositories improvement</description>
+        <start-date>2017-02-05</start-date>
+        <is-finished>true</is-finished>
+        <payment>47899.00</payment>
+        <company name="Gitbuh"/>
+    </project>
+    <project>
+        <name>HoodWars</name>
+        <description>Online fighting game</description>
+        <start-date>2018-06-11</start-date>
+        <is-finished>true</is-finished>
+        <payment>650000.00</payment>
+        <company name="Vallor"/>
+    </project>
+</projects>
