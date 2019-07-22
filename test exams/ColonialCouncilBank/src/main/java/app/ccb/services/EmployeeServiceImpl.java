@@ -3,18 +3,22 @@ package app.ccb.services;
 import app.ccb.config.Constants;
 import app.ccb.domain.dtos.EmployeeDto;
 import app.ccb.domain.entities.Branch;
+import app.ccb.domain.entities.Client;
 import app.ccb.domain.entities.Employee;
 import app.ccb.repositories.BranchRepository;
 import app.ccb.repositories.EmployeeRepository;
 import app.ccb.util.FileUtil;
 import app.ccb.util.ValidationUtil;
 import com.google.gson.Gson;
+import org.apache.logging.log4j.util.StringBuilders;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -93,7 +97,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public String exportTopEmployees() {
-        // TODO : Implement Me
-        return null;
+        List<Employee> exported = employeeRepository.findAllByClients();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        exported.forEach(
+            e -> {
+                stringBuilder.append(String.format("Full name: %s %s %n",
+                        e.getFirstName(),
+                        e.getLastName()))
+                    .append(String.format("Salary: %.2f %n",
+                        e.getSalary()))
+                    .append(String.format("Started on : %s %n",
+                        e.getStartedOn()))
+                    .append("clients: ")
+                    .append(System.lineSeparator());
+
+                Set<Client> emplClients = e.getClients();
+                emplClients.forEach(
+                    c -> {
+                        stringBuilder.append(String.format("    %s%n",
+                                c.getFullName()));
+                    }
+                );
+            }
+        );
+
+        return stringBuilder.toString();
     }
 }
