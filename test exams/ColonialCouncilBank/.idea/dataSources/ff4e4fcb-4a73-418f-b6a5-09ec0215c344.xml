@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="@localhost">
+<dataSource name="ccb_db/Hibernate">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.15">
     <root id="1">
       <ServerVersion>5.7.26</ServerVersion>
@@ -8,7 +8,6 @@
       <DefaultCasing>exact</DefaultCasing>
     </root>
     <schema id="2" parent="1" name="accounts">
-      <Current>1</Current>
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="alara_restaurant_db">
@@ -27,6 +26,7 @@
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <schema id="8" parent="1" name="ccb_db">
+      <Current>1</Current>
       <Visible>1</Visible>
       <Collation>latin1_swedish_ci</Collation>
     </schema>
